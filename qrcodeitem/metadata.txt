@@ -1,0 +1,21 @@
+[general]
+name=QR Code Layout Item
+description=Add QR and bar codes to QGIS print layout
+about=Add QR and bar codes to a QGIS print layout with various options for customizing the item's properties.
+category=Vector
+qgisMinimumVersion=3.0
+qgisMaximumVersion=3.99
+version=0.1
+
+author=John Gitau
+email=gkahiu@gmail.com
+
+icon=images/desktop.svg
+tags=qrcode, barcode, layout
+
+homepage=https://github.com/gkahiu/qrcodeitem
+tracker=https://github.com/gkahiu/qrcodeitem/issues
+repository=https://github.com/gkahiu/qrcodeitem
+
+experimental=True
+deprecated=False
