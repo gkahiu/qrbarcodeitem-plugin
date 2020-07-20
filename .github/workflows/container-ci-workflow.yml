@@ -1,0 +1,11 @@
+name: Run pylint
+
+on:
+   push:
+       branches:
+           - master
+           
+jobs:
+    pylint:
+        name: Pylint Code Analysis
+        runs-on: ubuntu-latest
