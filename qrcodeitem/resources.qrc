@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/qrcodeitem" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>

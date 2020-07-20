@@ -1,7 +1,7 @@
 [general]
-name=QR Code Layout Item
-description=Add QR and bar codes to QGIS print layout
-about=Add QR and bar codes to a QGIS print layout with various options for customizing the item's properties.
+name=QR Barcode Layout Items
+description=Add QR and bar code items to a QGIS print layout
+about=A plugin that enables the addition of QR or bar code items to a QGIS layout.
 category=Vector
 qgisMinimumVersion=3.0
 qgisMaximumVersion=3.99
