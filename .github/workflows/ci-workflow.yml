@@ -18,5 +18,6 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v2
 
-      - name: print working directory
-        run: pwd
+      - name: Setup plugin
+        run: qgis_setup.sh qrcodeitem
+        working-directory: qrcodeitem-plugin
