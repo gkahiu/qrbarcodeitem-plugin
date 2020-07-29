@@ -10,9 +10,9 @@ jobs:
     name: Lint and Unit Tests
     strategy:
       matrix:
-        qgis-version: [qgis/qgis:release-3_4, qgis/qgis:release-3_14]
+        qgis-version: ['qgis/qgis:release-3_4', 'qgis/qgis:release-3_14']
     runs-on: ubuntu-latest
-    container:
+    container:'
       image: ${{ matrix.qgis-version }}
       env:
         DISPLAY: ":99"
