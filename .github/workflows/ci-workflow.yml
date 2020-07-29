@@ -6,23 +6,17 @@ on:
       - master
            
 jobs:
-  review:
-    name: Pylint Code Analysis
+  test:
+    name: Lint and Unit Tests
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.7]
+    container:
+      image: qgis/qgis:final-3_14_1
+      env:
+        DISPLAY: ":99"
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Lint with pylint
-        run: |
-          pylint qrcodeitem
+      - name: Check out repo
+        uses: actions/checkout@v2
+
+      - name: Setup plugin
+        run: qgis_setup.sh qrcodeitem
