@@ -18,5 +18,8 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v2
 
-      - name: python path
-        run: echo $PYTHONPATH
+      - name: python version
+        run: python3 --version
+
+      - name: pip version
+        run: pip3 --version
