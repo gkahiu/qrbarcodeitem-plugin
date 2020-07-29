@@ -20,3 +20,4 @@ jobs:
 
       - name: Setup plugin
         run: qgis_setup.sh qrcodeitem
+        working-directory: /tests_directory
