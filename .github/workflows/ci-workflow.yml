@@ -13,9 +13,9 @@ jobs:
         qgis-version:
         - qgis/qgis:release-3_4
         - qgis/qgis:release-3_14
-        
+
     runs-on: ubuntu-latest
-    container:'
+    container:
       image: ${{ matrix.qgis-version }}
       env:
         DISPLAY: ":99"
