@@ -1,4 +1,4 @@
-name: QR Barcode Plugin CI Workflow
+name: CI Workflow
 
 on:
   push:
@@ -18,8 +18,7 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v2
 
-      - name: python version
-        run: python3 --version
-
-      - name: pip version
-        run: pip3 --version
+      - name: Install dependencies
+        run: |
+            pip3 install --upgrade pip
+            pip3 install -r requirements.txt
