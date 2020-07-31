@@ -12,7 +12,7 @@ jobs:
       matrix:
         qgis-version-tag:
         - qgis/qgis:release-3_4
-        - qgis/qgis:release-3_14
+        - qgis/qgis:release-3_10
 
     runs-on: ubuntu-latest
     container:
