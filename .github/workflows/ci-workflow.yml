@@ -17,9 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ${{ matrix.qgis-version-tag }}
-      options: -v /__w/qrbarcodeitem-plugin/qrbarcodeitem-plugin:/tests_directory
       env:
         DISPLAY: ":99"
+      volumes:
+        - /tests_directory
 
     steps:
       - name: Check out repo
@@ -29,9 +30,6 @@ jobs:
         run: |
             python3 -m pip install --upgrade pip
             python3 -m pip install -r requirements.txt
-
-      - name: print workspace
-        run: ${{ github.workspace }}
 
       - name: Run pylint
         run: pylint qrbarcodeitem
