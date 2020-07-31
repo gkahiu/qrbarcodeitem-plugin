@@ -10,15 +10,17 @@ jobs:
     name: Lint and Unit Tests
     strategy:
       matrix:
-        qgis-version:
+        qgis-version-tag:
         - qgis/qgis:release-3_4
         - qgis/qgis:release-3_14
 
     runs-on: ubuntu-latest
     container:
-      image: ${{ matrix.qgis-version }}
+      image: ${{ matrix.qgis-version-tag }}
       env:
         DISPLAY: ":99"
+      volumes:
+        - ${{ GITHUB_WORKSPACE }}:/tests_directory
 
     steps:
       - name: Check out repo
@@ -28,6 +30,9 @@ jobs:
         run: |
             python3 -m pip install --upgrade pip
             python3 -m pip install -r requirements.txt
+
+      - name: Get working directory
+        run: pwd
 
       - name: Run pylint
         run: pylint qrbarcodeitem
