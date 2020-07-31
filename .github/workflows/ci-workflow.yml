@@ -17,10 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ${{ matrix.qgis-version-tag }}
+      options: -v /__w/qrbarcodeitem-plugin/qrbarcodeitem-plugin:/tests_directory
       env:
         DISPLAY: ":99"
-      volumes:
-        - /__w/qrbarcodeitem-plugin/qrbarcodeitem-plugin:/tests_directory
 
     steps:
       - name: Check out repo
