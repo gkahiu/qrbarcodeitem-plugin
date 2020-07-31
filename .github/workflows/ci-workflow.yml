@@ -20,7 +20,7 @@ jobs:
       env:
         DISPLAY: ":99"
       volumes:
-        - ${{ GITHUB_WORKSPACE }}:/tests_directory
+        - /__w/qrbarcodeitem-plugin/qrbarcodeitem-plugin:/tests_directory
 
     steps:
       - name: Check out repo
