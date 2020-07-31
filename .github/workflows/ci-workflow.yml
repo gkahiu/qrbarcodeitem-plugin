@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ${{ matrix.qgis-version-tag }}
-      options: -v /__w/qrbarcodeitem-plugin/qrbarcodeitem-plugin:/tests_directory
+      options: -v ${{ GITHUB_WORKSPACE }}:/tests_directory
       env:
         DISPLAY: ":99"
 
