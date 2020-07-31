@@ -30,9 +30,9 @@ jobs:
             python3 -m pip install --upgrade pip
             python3 -m pip install -r requirements.txt
 
-      - name: Get working directory
-        run: pwd
-
       - name: Run pylint
         run: pylint qrbarcodeitem
+
+      - name: Install plugin
+        run: qgis_setup.sh qrbarcodeitem
       
