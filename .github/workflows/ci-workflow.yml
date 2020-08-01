@@ -33,9 +33,12 @@ jobs:
             python3 -m pip install --upgrade pip
             python3 -m pip install -r requirements.txt
 
-      - name: Run pylint
-        run: pylint qrbarcodeitem
-
       - name: Install plugin
         run: qgis_setup.sh $PLUGIN_NAME
+
+      - name: Add test folder to Pythonpath
+        run: echo 'export PYTHONPATH=$PYTHONPATH:/tests_directory/test'
+
+      - name: Run pylint
+        run: pylint $PLUGIN_NAME
       
