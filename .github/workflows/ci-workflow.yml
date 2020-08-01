@@ -13,6 +13,8 @@ jobs:
         qgis-version-tag:
         - qgis/qgis:release-3_4
         - qgis/qgis:release-3_10
+    env:
+      PLUGIN_NAME: qrbarcodeitem
 
     runs-on: ubuntu-latest
     container:
@@ -35,5 +37,5 @@ jobs:
         run: pylint qrbarcodeitem
 
       - name: Install plugin
-        run: qgis_setup.sh qrbarcodeitem
+        run: qgis_setup.sh $PLUGIN_NAME
       
