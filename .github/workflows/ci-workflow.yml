@@ -41,4 +41,7 @@ jobs:
 
       - name: Run pylint
         run: pylint $PLUGIN_NAME
+
+      - name: Print pythonpath
+        run: printenv PYTHONPATH
       
