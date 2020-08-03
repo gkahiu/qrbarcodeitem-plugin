@@ -39,11 +39,9 @@ jobs:
       - name: Add test folder to Pythonpath
         run: echo 'export PYTHONPATH=$PYTHONPATH:/tests_directory/test'
 
-
+      - name: Test TTY
+        run: ls /dev/tty
 
       - name: Print pythonpath
         run: printenv PYTHONPATH
-
-      - name: Run tests
-        run: qgis_testrunner.sh qrbarcodeitem.test.test_suite.run_all
       
