@@ -67,7 +67,7 @@ class QRBarCodePluginLoader:
         return QCoreApplication.translate('QrBarCodeLayoutItem', message)
 
     def initGui(self):
-        """Register items in the QGIS layout registry."""
+        """Register qr and bar items in the QGIS layout registry."""
         self.register_layout_items()
 
     def register_layout_items(self):
