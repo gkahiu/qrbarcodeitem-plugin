@@ -23,7 +23,6 @@ jobs:
         DISPLAY: ":99"
       volumes:
         - /tests_directory
-        - /tmp/.X11-unix:/tmp/.X11-unix
 
     steps:
       - name: Check out repo
