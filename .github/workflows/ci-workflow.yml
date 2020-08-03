@@ -46,5 +46,5 @@ jobs:
         run: printenv PYTHONPATH
 
       - name: Run tests
-        run: qgis_testrunner.sh test.test_suite
+        run: qgis_testrunner.sh qrbarcodeitem.test.test_suite
       
