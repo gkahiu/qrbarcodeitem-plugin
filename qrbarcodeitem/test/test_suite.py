@@ -31,3 +31,7 @@ def run_all():
 
     runner = unittest.TextTestRunner(verbosity=2, stream=sys.stdout)
     runner.run(suite)
+
+
+if __name__ == '__main__':
+    run_all()
