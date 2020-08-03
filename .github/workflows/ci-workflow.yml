@@ -40,10 +40,7 @@ jobs:
         run: echo 'export PYTHONPATH=$PYTHONPATH:/tests_directory/test'
 
       - name: Test TTY
-        run: ls /dev/tty*
-
-      - name: Test TTY devices
-        run: ls /dev/tty.*
+        run: tee /dev/tty
 
       - name: Print pythonpath
         run: printenv PYTHONPATH
