@@ -39,8 +39,7 @@ jobs:
       - name: Add test folder to Pythonpath
         run: echo 'export PYTHONPATH=$PYTHONPATH:/tests_directory/test'
 
-      - name: Run pylint
-        run: pylint $PLUGIN_NAME
+      
 
       - name: Print pythonpath
         run: printenv PYTHONPATH
