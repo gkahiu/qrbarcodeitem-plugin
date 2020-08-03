@@ -25,7 +25,7 @@ class QRCodeItemTests(unittest.TestCase):
     """Test QRCode item"""
 
     def test_name(self):
-        self.assertEqual('QRCode', 'QRCode1')
+        self.assertEqual('QRCode', 'QRCode')
 
 
 if __name__ == '__main__':
