@@ -19,6 +19,7 @@ email                : gkahiu@gmail.com
  ***************************************************************************/
 """
 import unittest
+import sys
 
 from qrbarcodeitem.test.test_qrcode_item import QRCodeItemTests
 
@@ -26,7 +27,7 @@ from qrbarcodeitem.test.test_qrcode_item import QRCodeItemTests
 def run_all():
     """Run all tests."""
     suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(QRCodeItemTests))
+    suite.addTests(unittest.makeSuite(QRCodeItemTests))
 
-    runner = unittest.TextTestRunner(verbosity=2)
+    runner = unittest.TextTestRunner(verbosity=2, stream=sys.stdout)
     runner.run(suite)
