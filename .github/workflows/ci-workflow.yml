@@ -44,4 +44,7 @@ jobs:
 
       - name: Print pythonpath
         run: printenv PYTHONPATH
+
+      - name: Run tests
+        run: qgis_testrunner.sh test.test_suite
       
