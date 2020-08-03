@@ -40,6 +40,6 @@ install:
 
 script:
 
-  - docker exec -it qgis-testing-environment sh -c "qgis_testrunner.sh qrbarcodeitem.test.test_suite"
+  - docker exec -it qgis-testing-environment sh -c "qgis_testrunner.sh test.test.test_suite"
 
 sudo: false
