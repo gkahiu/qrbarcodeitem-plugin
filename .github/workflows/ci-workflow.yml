@@ -42,9 +42,6 @@ jobs:
       - name: Print pythonpath
         run: printenv PYTHONPATH
 
-      - name: Run xhost
-        run: xhost +
-
       - name: Run tests
-        run: qgis_testrunner.sh qrbarcodeitem.test.test_suite.run_all
+        run: qgis_testrunner.sh qrbarcodeitem.test.test_suite
       
