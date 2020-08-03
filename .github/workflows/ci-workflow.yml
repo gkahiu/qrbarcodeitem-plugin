@@ -43,5 +43,7 @@ jobs:
         run: printenv PYTHONPATH
 
       - name: Run tests
-        run: qgis_testrunner.sh qrbarcodeitem.test.test_suite
+        run: |
+          sh -c "/usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset -nolisten tcp &"
+          qgis_testrunner.sh qrbarcodeitem.test.test_suite
       
