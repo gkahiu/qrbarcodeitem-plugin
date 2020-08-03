@@ -36,14 +36,8 @@ jobs:
       - name: Install plugin
         run: qgis_setup.sh $PLUGIN_NAME
 
-      - name: Add test folder to Pythonpath
-        run: echo 'export PYTHONPATH=$PYTHONPATH:/tests_directory/test'
-
-      - name: Print pythonpath
-        run: printenv PYTHONPATH
-
       - name: Run tests
         run: |
           sh -c "/usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset -nolisten tcp &"
-          qgis_testrunner.sh test.test_suite
+          qgis_testrunner.sh qrbarcodeitem.test.test_suite
       

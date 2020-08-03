@@ -21,7 +21,7 @@ email                : gkahiu@gmail.com
 import unittest
 import sys
 
-from test import QRCodeItemTests
+from qrbarcodeitem.test.test_qrcode_item import QRCodeItemTests
 
 
 def run_all():
