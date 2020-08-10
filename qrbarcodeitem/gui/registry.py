@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
-Name                 : Test suite
-Description          : Aggregated plugin tests
-Date                 : 03-08-2020
+Name                 : Item Gui Registry
+Description          : Registers GUI metadata for QR and barcode items.
+Date                 : 10-08-2020
 copyright            : (C) 2020 by John Gitau
 email                : gkahiu@gmail.com
  ***************************************************************************/
@@ -17,20 +17,9 @@ email                : gkahiu@gmail.com
  *                                                                         *
  ***************************************************************************/
 """
-import unittest
-import sys
-
-from qrbarcodeitem.test.test_qrcode_item import QRCodeItemTests
+from qgis.gui import QgsGui # pylint: disable=unused-import
 
 
-def run_all():
-    """Run all tests."""
-    suite = unittest.TestSuite()
-    suite.addTests(unittest.makeSuite(QRCodeItemTests))
-
-    runner = unittest.TextTestRunner(verbosity=2, stream=sys.stdout)
-    runner.run(suite)
-
-
-if __name__ == '__main__':
-    run_all()
+def register_item_gui_metadata():
+    """Registers GUI metadata for QR and barcode items."""
+    pass #item_registry = QgsGui.layoutItemGuiRegistry()

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
-Name                 : Test suite
-Description          : Aggregated plugin tests
-Date                 : 03-08-2020
+Name                 : Item Registry
+Description          : Registers barcode items in app item registry.
+Date                 : 10-08-2020
 copyright            : (C) 2020 by John Gitau
 email                : gkahiu@gmail.com
  ***************************************************************************/
@@ -17,20 +17,15 @@ email                : gkahiu@gmail.com
  *                                                                         *
  ***************************************************************************/
 """
-import unittest
-import sys
+from qgis.core import QgsApplication
 
-from qrbarcodeitem.test.test_qrcode_item import QRCodeItemTests
-
-
-def run_all():
-    """Run all tests."""
-    suite = unittest.TestSuite()
-    suite.addTests(unittest.makeSuite(QRCodeItemTests))
-
-    runner = unittest.TextTestRunner(verbosity=2, stream=sys.stdout)
-    runner.run(suite)
+from qrbarcodeitem.layout.qrcode_item import (
+    QrCodeLayoutItemMetadata
+)
 
 
-if __name__ == '__main__':
-    run_all()
+def register_barcode_items():
+    """Register barcode items in the app item registry."""
+    QgsApplication.layoutItemRegistry().addLayoutItemType(
+        QrCodeLayoutItemMetadata()
+    )

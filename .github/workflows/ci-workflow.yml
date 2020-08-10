@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         qgis-version-tag:
+        # Issues in 3.4 when running running tests due to 'tee dev/tty' command
         - qgis/qgis:release-3_4
         - qgis/qgis:release-3_10
     env:

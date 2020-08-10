@@ -2,10 +2,9 @@
 """
 /***************************************************************************
 Name                 : QRBarCodePluginLoader
-Description          : Loader for the QR and bar code layout items
+Description          : Loader for the QR and bar code layout layout
 Date                 : 07-07-2020
 copyright            : (C) 2020 by John Gitau
-                       See the accompanying file CONTRIBUTORS.txt in the root
 email                : gkahiu@gmail.com
  ***************************************************************************/
 
@@ -20,7 +19,14 @@ email                : gkahiu@gmail.com
 """
 import os.path
 
-from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
+from qgis.PyQt.QtCore import (
+    QSettings,
+    QTranslator,
+    qVersion,
+    QCoreApplication
+)
+
+from qrbarcodeitem.layout.registry import register_barcode_items
 
 
 class QRBarCodePluginLoader:
@@ -66,18 +72,16 @@ class QRBarCodePluginLoader:
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
         return QCoreApplication.translate('QrBarCodeLayoutItem', message)
 
-    def initGui(self):
-        """Register qr and bar items in the QGIS layout registry."""
-        self.register_layout_items()
-
-    def register_layout_items(self):
-        """Register QR and bar code items."""
-        pass
+    def initGui(self): # pylint: disable=no-self-use
+        """Register QR and barcode layout items in the QGIS layout
+        item registry.
+        """
+        register_barcode_items()
 
     def unregister_layout_items(self):
-        """Unregister QR and bar code items."""
+        """Unregister QR and bar code layout."""
         pass
 
     def unload(self):
-        """Removes the qr and bar code items from the QGIS layout registry."""
+        """Removes the qr and bar code layout from the QGIS layout registry."""
         self.unregister_layout_items()

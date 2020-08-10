@@ -2,7 +2,7 @@
 """
 /***************************************************************************
 Name                 : QRBarCodePlugin
-Description          : Plugin for adding Qr Code and barcode items in a print
+Description          : Plugin for adding Qr Code and barcode layout in a print
                        layout
 Date                 : 07-07-2020
 copyright            : (C) 2020 by John Gitau
