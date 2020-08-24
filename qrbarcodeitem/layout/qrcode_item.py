@@ -30,14 +30,14 @@ from qgis.core import (
 
 from qrbarcodeitem.extlibs import segno
 from qrbarcodeitem.layout.abstract_barcode import (
-    AbstractLayoutItemBarcode,
+    AbstractBarcodeLayoutItem,
     BarcodeException
 )
 
 QR_CODE_TYPE = QgsLayoutItemRegistry.PluginItem + 2345
 
 
-class QrCodeLayoutItem(AbstractLayoutItemBarcode):
+class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
     """Item for rendering quick response code."""
 
     _ATTR_MICRO = 'isMicro'
