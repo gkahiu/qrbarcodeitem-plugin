@@ -19,7 +19,14 @@ email                : gkahiu@gmail.com
 """
 import unittest
 
-from qgis.core import QgsApplication
+from qgis.core import (
+    QgsApplication,
+    QgsReadWriteContext
+)
+from qgis.PyQt.QtXml import (
+    QDomDocument,
+    QDomElement
+)
 
 from qrbarcodeitem.layout.qrcode_item import (
     QR_CODE_TYPE,
@@ -51,7 +58,7 @@ class QRCodeItemTests(unittest.TestCase):
         self.assertIn(QR_CODE_TYPE, items)
 
     def test_item_properties(self):
-        """Test custom item properties."""
+        """Test default values of custom item properties."""
         layout = create_layout('Test QR Code Item Properties')
         item = QrCodeLayoutItem(layout)
 
@@ -59,6 +66,38 @@ class QRCodeItemTests(unittest.TestCase):
         self.assertFalse(item.is_micro)
         self.assertEqual(item.bg_color, '#FFFFFF')
         self.assertEqual(item.data_color, '#000000')
+
+    def test_read_write(self):
+        """Test read/write of custom properties from/to XML."""
+        doc = QDomDocument('QRCodeProperties')
+        el = doc.createElement('Items')
+        is_micro = True
+        bg_color = '#45EB6E'
+        data_color = '#B20EC2'
+
+        layout = create_layout('Test QR Code Item Properties')
+        item = QrCodeLayoutItem(layout)
+        item.is_micro = is_micro
+        item.bg_color = bg_color
+        item.data_color = data_color
+
+        # Test write
+        status = item.writeXml(el, doc, QgsReadWriteContext())
+        self.assertTrue(status)
+
+        # Test read
+        self.assertTrue(el.hasChildNodes())
+        item_el = el.firstChildElement()
+        self.assertFalse(item_el.isNull())
+        read_item = QrCodeLayoutItem(layout)
+        self.assertTrue(
+            read_item.readXml(item_el, doc, QgsReadWriteContext())
+        )
+        self.assertEqual(read_item.is_micro, is_micro)
+        self.assertEqual(read_item.bg_color, bg_color)
+        self.assertEqual(read_item.data_color, data_color)
+
+
 
 
 if __name__ == '__main__':
