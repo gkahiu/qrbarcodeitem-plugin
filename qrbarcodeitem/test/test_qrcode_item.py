@@ -83,6 +83,11 @@ class QRCodeItemTests(unittest.TestCase):
         status = item.writeXml(el, doc, QgsReadWriteContext())
         self.assertTrue(status)
 
+        # Test read
+        self.assertTrue(el.hasChildNodes())
+        item_el = el.firstChildElement()
+        self.assertFalse(item_el.isNull())
+
 
 if __name__ == '__main__':
     unittest.main()
