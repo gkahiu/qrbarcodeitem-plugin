@@ -24,8 +24,7 @@ from qgis.core import (
     QgsReadWriteContext
 )
 from qgis.PyQt.QtXml import (
-    QDomDocument,
-    QDomElement
+    QDomDocument
 )
 
 from qrbarcodeitem.layout.qrcode_item import (
@@ -34,11 +33,10 @@ from qrbarcodeitem.layout.qrcode_item import (
 )
 from qrbarcodeitem.layout.registry import register_barcode_items
 from qrbarcodeitem.test.utilities import (
-    create_layout,
-    get_qgis_app
+    create_layout
 )
 
-#QGIS_APP, CANVAS, IFACE, PARENT = get_qgis_app()
+# QGIS_APP, CANVAS, IFACE, PARENT = get_qgis_app()
 
 
 class QRCodeItemTests(unittest.TestCase):
@@ -84,20 +82,6 @@ class QRCodeItemTests(unittest.TestCase):
         # Test write
         status = item.writeXml(el, doc, QgsReadWriteContext())
         self.assertTrue(status)
-
-        # Test read
-        self.assertTrue(el.hasChildNodes())
-        item_el = el.firstChildElement()
-        self.assertFalse(item_el.isNull())
-        read_item = QrCodeLayoutItem(layout)
-        self.assertTrue(
-            read_item.readXml(item_el, doc, QgsReadWriteContext())
-        )
-        self.assertEqual(read_item.is_micro, is_micro)
-        self.assertEqual(read_item.bg_color, bg_color)
-        self.assertEqual(read_item.data_color, data_color)
-
-
 
 
 if __name__ == '__main__':
