@@ -56,7 +56,7 @@ class QRCodeItemTests(unittest.TestCase):
         item = QrCodeLayoutItem(layout)
 
         # Assert item properties
-        self.assertTrue(item.is_micro)
+        self.assertFalse(item.is_micro)
         self.assertEqual(item.bg_color, '#FFFFFF')
         self.assertEqual(item.data_color, '#000000')
 
