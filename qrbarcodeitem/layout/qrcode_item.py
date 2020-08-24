@@ -45,7 +45,7 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
     _ATTR_DATA_COLOR = 'dataColor'
 
     def __init__(self, *args):
-        super(QrCodeLayoutItem, self).__init__(*args)
+        super().__init__(*args)
         self._is_micro = False
         self._bg_color = '#FFFFFF'
         self._data_color = '#000000'
@@ -160,7 +160,7 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
 class QrCodeLayoutItemMetadata(QgsLayoutItemAbstractMetadata):
     """Metadata info of the QR code item."""
     def __init__(self):
-        super(QrCodeLayoutItemMetadata, self).__init__(
+        super().__init__(
             QR_CODE_TYPE,
             QCoreApplication.translate('QrBarCodeLayoutItem', 'QR Code Item')
         )

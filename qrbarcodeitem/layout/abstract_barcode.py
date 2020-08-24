@@ -49,7 +49,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
     """Base class for barcode layout."""
 
     def __init__(self, layout):
-        super(AbstractBarcodeLayoutItem, self).__init__(layout)
+        super().__init__(layout)
         self._code_value = ''
         self._temp_dir = '{0}/qrbarbarcode'.format(
             QStandardPaths.standardLocations(QStandardPaths.TempLocation)
@@ -162,9 +162,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
 
     def writePropertiesToElement(self, el, document, context):
         """Override saving of item properties."""
-        status = super(
-            AbstractBarcodeLayoutItem, self
-        ).writePropertiesToElement(el, document, context)
+        status = super().writePropertiesToElement(el, document, context)
         if status:
             self._write_base_properties_to_el(el)
             status = self._write_props_to_el(el, document, context)
@@ -184,9 +182,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
 
     def readPropertiesFromElement(self, element, document, context):
         """Override reading of item properties."""
-        status = super(
-            AbstractBarcodeLayoutItem, self
-        ).readPropertiesFromElement(element, document, context)
+        status = super().readPropertiesFromElement(element, document, context)
 
         if status:
             self._code_value = element.attribute('codeValue')
