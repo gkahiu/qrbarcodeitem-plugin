@@ -126,12 +126,12 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
                 dark=self._data_color,
                 light=self._bg_color
             )
-        except segno.DataOverflowError:
+        except segno.DataOverflowError as doe:
             raise BarcodeException(
                 'Data too large, change to standard QR code.'
-            )
+            ) from doe
         except ValueError as ve:
-            raise BarcodeException(str(ve))
+            raise BarcodeException(str(ve)) from ve
 
     def type(self): # pylint: disable=no-self-use
         """Return item's unique identifier."""
