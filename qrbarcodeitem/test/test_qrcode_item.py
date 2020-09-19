@@ -84,9 +84,9 @@ class QRCodeItemTests(unittest.TestCase):
         self.assertTrue(status)
 
         # Test read
-        # self.assertTrue(el.hasChildNodes())
-        # item_el = el.firstChildElement()
-        # self.assertFalse(item_el.isNull())
+        self.assertTrue(el.hasChildNodes())
+        item_el = el.firstChildElement()
+        self.assertFalse(item_el.isNull())
         # read_layout = create_layout('Test XML read')
         # read_item = QrCodeLayoutItem(read_layout)
         # read_item.readXml(item_el, doc, QgsReadWriteContext())
