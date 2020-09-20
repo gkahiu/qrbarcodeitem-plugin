@@ -89,7 +89,7 @@ class QRCodeItemTests(unittest.TestCase):
         self.assertFalse(item_el.isNull())
         read_layout = create_layout('Test XML read')
         read_item = QrCodeLayoutItem(read_layout)
-        # read_item.readXml(item_el, doc, QgsReadWriteContext())
+        read_status = read_item.readXml(item_el, doc, QgsReadWriteContext())
         # self.assertTrue(read_status)
         # self.assertEqual(read_item.is_micro, is_micro)
         # self.assertEqual(read_item.bg_color, bg_color)

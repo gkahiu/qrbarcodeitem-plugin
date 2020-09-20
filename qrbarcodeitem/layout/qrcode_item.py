@@ -147,11 +147,12 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
 
     def _read_props_from_el(self, el, document, context):
         """Reads item attributes."""
+        print('Read QR code properties PRINT')
         self._is_micro = bool(el.attribute(self._ATTR_MICRO, False))
         self._bg_color = str(el.attribute(self._ATTR_BG_COLOR, '#FFFFFF'))
         self._data_color = str(el.attribute(self._ATTR_DATA_COLOR, '#000000'))
 
-        self.update_item()
+        #self.update_item()
 
         return True
 
