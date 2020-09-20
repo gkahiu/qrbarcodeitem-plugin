@@ -190,7 +190,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
 
         return status
 
-    def _read_props_from_el(self, el, document, context):
+    def _read_props_from_el(self, el, document, context): # pylint: disable=unused-argument, no-self-use
         """Read properties from subclass. Should return True of False."""
         return True
 
