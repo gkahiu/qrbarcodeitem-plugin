@@ -186,13 +186,13 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
 
         if status:
             self._code_value = element.attribute('codeValue')
-            # status = self._read_props_from_el(element, document, context)
+            status = self._read_props_from_el(element, document, context)
 
         return status
 
     def _read_props_from_el(self, el, document, context):
         """Read properties from subclass. Should return True of False."""
-        raise NotImplementedError
+        return True
 
     def set_error_image(self):
         """
