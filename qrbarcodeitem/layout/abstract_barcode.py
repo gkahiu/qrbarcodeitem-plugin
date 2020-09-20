@@ -235,3 +235,10 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
 
         # Set picture path
         self.setPicturePath(svg_path)
+
+    def _str_to_bool(self, str_val): # pylint: disable=no-self-use
+        # Returns a boolean value from the string representation.
+        if str_val.lower() in ('true', 'yes', 't', 'y'):
+            return True
+
+        return False
