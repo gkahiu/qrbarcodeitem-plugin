@@ -180,6 +180,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
         """
         raise NotImplementedError
 
+    '''
     def readPropertiesFromElement(self, element, document, context):
         """Override reading of item properties."""
         status = super().readPropertiesFromElement(element, document, context)
@@ -189,6 +190,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
             status = self._read_props_from_el(element, document, context)
 
         return status
+    '''
 
     def _read_props_from_el(self, el, document, context):
         """Read properties from subclass. Should return True of False."""
