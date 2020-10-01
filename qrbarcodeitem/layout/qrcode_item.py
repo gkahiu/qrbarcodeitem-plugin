@@ -41,7 +41,7 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
     """Item for rendering quick response code."""
 
     _ATTR_MICRO = 'isMicro'
-    _ATTR_BG_COLOR = 'backgroundColor'
+    _ATTR_BG_COLOR = 'codeBackgroundColor'
     _ATTR_DATA_COLOR = 'dataColor'
     _DEF_BG_COLOR = '#FFFFFF'
     _DEF_DATA_COLOR = '#000000'
@@ -126,7 +126,8 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
                 file_path,
                 scale=self._scale,
                 dark=self._data_color,
-                light=self._bg_color
+                light=self._bg_color,
+                border=1
             )
         except segno.DataOverflowError as doe:
             raise BarcodeException(

@@ -35,6 +35,7 @@ from qgis.PyQt.QtSvg import QSvgGenerator
 from qgis.core import (
     Qgis,
     QgsExpression,
+    QgsLayoutItem,
     QgsLayoutItemPicture,
     QgsMessageLog
 )
@@ -57,6 +58,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
 
         # Set picture properties
         self.setResizeMode(QgsLayoutItemPicture.Zoom)
+        self.setPictureAnchor(QgsLayoutItem.Middle)
 
     @property
     def temp_image_dir(self):
@@ -165,6 +167,10 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
         """Override saving of item properties."""
         status = super().writePropertiesToElement(el, document, context)
         if status:
+            # Remove value of file attribute
+            if el.hasAttribute('file'):
+                el.setAttribute('file', '')
+
             self._write_base_properties_to_el(el)
             status = self._write_props_to_el(el, document, context)
 
