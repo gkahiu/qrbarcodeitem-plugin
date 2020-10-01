@@ -169,7 +169,7 @@ class QrCodeLayoutItemMetadata(QgsLayoutItemAbstractMetadata):
     def __init__(self):
         super().__init__(
             QR_CODE_TYPE,
-            QCoreApplication.translate('QrBarCodeLayoutItem', 'QR Code Item')
+            QCoreApplication.translate('QrBarCodeLayoutItem', 'QR Code')
         )
 
     def createItem(self, layout): # pylint: disable=no-self-use

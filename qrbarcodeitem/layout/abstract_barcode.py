@@ -86,6 +86,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
         if value == self._code_value:
             return
 
+        self._code_value = value
         self.generate_code()
 
     def _gen_svg_path(self):
