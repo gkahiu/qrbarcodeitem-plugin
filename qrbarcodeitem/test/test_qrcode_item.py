@@ -23,6 +23,7 @@ from qgis.core import (
     QgsApplication,
     QgsReadWriteContext
 )
+from qgis.PyQt.QtCore import QRectF
 from qgis.PyQt.QtXml import (
     QDomDocument
 )
@@ -35,6 +36,7 @@ from qrbarcodeitem.layout.registry import register_barcode_items
 from qrbarcodeitem.test.utilities import (
     create_layout
 )
+from qrbarcodeitem.test.barcode_checker import BarcodeLayoutChecker
 
 # QGIS_APP, CANVAS, IFACE, PARENT = get_qgis_app()
 
@@ -43,7 +45,7 @@ class QRCodeItemTests(unittest.TestCase):
     """Test QRCode item"""
 
     def __init__(self, *args, **kwargs):
-        super(QRCodeItemTests, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self._item_registry = QgsApplication.layoutItemRegistry()
 
     def setUp(self) -> None:
@@ -94,6 +96,21 @@ class QRCodeItemTests(unittest.TestCase):
         self.assertEqual(read_item.is_micro, is_micro)
         self.assertEqual(read_item.bg_color, bg_color)
         self.assertEqual(read_item.data_color, data_color)
+
+    def test_qrcode_render(self):
+        """Test rendering of QR code in layout and compare image."""
+        layout = create_layout('Test QR Code Item Render')
+        item = QrCodeLayoutItem(layout)
+        item.attemptSetSceneRect(QRectF(20, 20, 100, 100))
+        item.setFrameEnabled(True)
+        item.bg_color = '#F5FB0E'
+        item.data_color = '#890C95'
+        item.code_value = 'QR Code 2020'
+        layout.addLayoutItem(item)
+
+        checker = BarcodeLayoutChecker('qrcode_render', layout)
+        result, message = checker.test_layout() # pylint: disable=unused-variable
+        self.assertTrue(result)
 
 
 if __name__ == '__main__':

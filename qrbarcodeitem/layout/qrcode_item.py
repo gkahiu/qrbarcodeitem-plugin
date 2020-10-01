@@ -43,13 +43,15 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
     _ATTR_MICRO = 'isMicro'
     _ATTR_BG_COLOR = 'backgroundColor'
     _ATTR_DATA_COLOR = 'dataColor'
+    _DEF_BG_COLOR = '#FFFFFF'
+    _DEF_DATA_COLOR = '#000000'
 
     def __init__(self, *args):
         super().__init__(*args)
         self._is_micro = False
-        self._bg_color = '#FFFFFF'
-        self._data_color = '#000000'
-        self._scale = 4
+        self._bg_color = self._DEF_BG_COLOR
+        self._data_color = self._DEF_DATA_COLOR
+        self._scale = 10
 
     @property
     def is_micro(self):
@@ -111,7 +113,7 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
 
     def icon(self): # pylint: disable=no-self-use
         """Item's icon."""
-        return QIcon(':/plugins/qrbarcodeitem/images/qrcode.svg')
+        return QIcon(':/plugins/qrbarcodeitem/control_images/qrcode.svg')
 
     def _gen_image(self, file_path):
         """Generate QR Code based on the computed value."""
@@ -150,8 +152,12 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
         self._is_micro = self._str_to_bool(
             el.attribute(self._ATTR_MICRO, 'False')
         )
-        self._bg_color = str(el.attribute(self._ATTR_BG_COLOR, '#FFFFFF'))
-        self._data_color = str(el.attribute(self._ATTR_DATA_COLOR, '#000000'))
+        self._bg_color = str(
+            el.attribute(self._ATTR_BG_COLOR, self._DEF_BG_COLOR)
+        )
+        self._data_color = str(
+            el.attribute(self._ATTR_DATA_COLOR, self._DEF_DATA_COLOR)
+        )
         self.update_item()
 
         return True

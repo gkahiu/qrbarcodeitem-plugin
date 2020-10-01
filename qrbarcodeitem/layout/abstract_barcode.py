@@ -41,7 +41,7 @@ from qgis.core import (
 
 
 class BarcodeException(Exception):
-    """Exception when generating barcode images."""
+    """Exception when generating barcode control_images."""
     pass
 
 
@@ -173,12 +173,12 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
         """Write base properties to DOM element."""
         el.setAttribute('codeValue', self._code_value)
 
-    def _write_props_to_el(self, el, document, context):
+    def _write_props_to_el(self, el, document, context): # pylint: disable=unused-argument, no-self-use
         """
         Write custom properties for implementation by subclass, should
         return True or False.
         """
-        raise NotImplementedError
+        return True
 
     def readPropertiesFromElement(self, element, document, context):
         """Override reading of item properties."""
