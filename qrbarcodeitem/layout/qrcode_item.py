@@ -17,9 +17,6 @@ email                : gkahiu@gmail.com
  *                                                                         *
  ***************************************************************************/
 """
-from qgis.PyQt.QtGui import (
-    QIcon
-)
 from qgis.PyQt.QtCore import (
     QCoreApplication
 )
@@ -32,6 +29,9 @@ from qrbarcodeitem.extlibs import segno
 from qrbarcodeitem.layout.abstract_barcode import (
     AbstractBarcodeLayoutItem,
     BarcodeException
+)
+from qrbarcodeitem.utils import (
+    get_icon
 )
 
 QR_CODE_TYPE = QgsLayoutItemRegistry.PluginItem + 2345
@@ -112,8 +112,8 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
             self.update_item()
 
     def icon(self): # pylint: disable=no-self-use
-        """Item's icon."""
-        return QIcon(':/plugins/qrbarcodeitem/control_images/qrcode.svg')
+        """Return item's icon."""
+        return get_icon('qrcode.svg')
 
     def _gen_image(self, file_path):
         """Generate QR Code based on the computed value."""
@@ -122,12 +122,16 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
                 self.computed_value(),
                 micro=self._is_micro
             )
+            # Use options for compressing the output file
             qr.save(
                 file_path,
                 scale=self._scale,
                 dark=self._data_color,
                 light=self._bg_color,
-                border=1
+                border=1,
+                xmldecl=False,
+                svgns=False,
+                nl=False
             )
         except segno.DataOverflowError as doe:
             raise BarcodeException(

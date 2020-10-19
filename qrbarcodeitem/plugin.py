@@ -27,7 +27,7 @@ from qgis.PyQt.QtCore import (
 )
 
 from qrbarcodeitem.layout.registry import register_barcode_items
-from qrbarcodeitem.gui.registry import register_item_gui_metadata
+from qrbarcodeitem.gui.registry import register_items_gui_metadata
 
 
 class QRBarCodePluginLoader:
@@ -75,11 +75,11 @@ class QRBarCodePluginLoader:
         return QCoreApplication.translate('QrBarCodeLayoutItem', message)
 
     def initGui(self): # pylint: disable=no-self-use
-        """Register QR and barcode layout items in the QGIS layout
-        item registry.
+        """Register QR and barcode layout items in QGIS layout item
+        registry.
         """
         register_barcode_items()
-        register_item_gui_metadata()
+        register_items_gui_metadata()
 
     def unregister_layout_items(self):
         """Unregister QR and bar code layout."""

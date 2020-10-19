@@ -103,6 +103,8 @@ class BarcodeLayoutChecker(QgsMultiRenderChecker):
         output_image.save(image_path, 'PNG')
         self.setRenderedImage(image_path)
 
+        print(self.controlImagePath())
+
         test_result = self.runTest(self.test_name, self.pixel_diff)
 
         return test_result, self.report()

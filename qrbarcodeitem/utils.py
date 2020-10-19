@@ -18,7 +18,10 @@ email                : gkahiu@gmail.com
  ***************************************************************************/
 """
 import os
-from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtGui import (
+    QColor,
+    QIcon
+)
 
 
 def get_icon(icon_name):
@@ -32,7 +35,7 @@ def get_icon(icon_name):
     """
     path = os.path.join(
         os.path.dirname(__file__),
-        '..',
+        '',
         'images',
         icon_name
     )
@@ -40,3 +43,15 @@ def get_icon(icon_name):
         return QIcon()
 
     return QIcon(path)
+
+
+def color_from_name(clr_name, default='#000000'):
+    """
+    Creates a QColor object from the corresponding color code.
+    """
+    clr = QColor()
+    clr.setNamedColor(clr_name)
+    if not clr.isValid():
+        clr.setNamedColor(default)
+
+    return clr

@@ -132,6 +132,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
         """
         status = False
         if not self.computed_value():
+            self.setPicturePath('')
             return status
 
         svg_file = QTemporaryFile('qrbarcode_temp.XXXXXX')

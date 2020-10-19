@@ -28,7 +28,7 @@ from qrbarcodeitem.layout.qrcode_item import (
     QR_CODE_TYPE,
     QrCodeLayoutItem
 )
-from qrbarcodeitem.gui.utils import (
+from qrbarcodeitem.utils import (
     get_icon
 )
 from qrbarcodeitem.gui.qrcode_widget import QrCodeLayoutItemWidget
@@ -37,7 +37,7 @@ ITEM_CATEGORY = 'qrbarcodeitem'
 
 
 class QrCodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
-    """Stores GUI metadata for a QR Code layout item."""
+    """Stores GUI metadata for a QR code layout item."""
     def __init__(self):
         super().__init__(
             QR_CODE_TYPE,
@@ -48,18 +48,12 @@ class QrCodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
     def createItemWidget(self, item): # pylint: disable=missing-function-docstring, no-self-use
         return QrCodeLayoutItemWidget(None, item)
 
-    def createItem(self, layout): # pylint: disable=missing-function-docstring, no-self-use
-        return QrCodeLayoutItem(layout)
-
     def creationIcon(self): # pylint: disable=missing-function-docstring, no-self-use
-        return get_icon('qrcode.svg')
-
-    def newItemAddedToLayout(self, item): # pylint: disable=missing-function-docstring, no-self-use
-        item.code_value = 'QR Code 2020'
+        return get_icon('qrcode_plus.svg')
 
 
 class BarCodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
-    """Stores GUI metadata for a barcode Code layout item."""
+    """Stores GUI metadata for a barcode layout item."""
     def __init__(self):
         super().__init__(
             234567,
@@ -77,10 +71,10 @@ class BarCodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
         return QrCodeLayoutItem(layout)
 
     def creationIcon(self): # pylint: disable=missing-function-docstring, no-self-use
-        return get_icon('barcode.svg')
+        return get_icon('barcode_plus.svg')
 
 
-def register_item_gui_metadata():
+def register_items_gui_metadata():
     """Registers GUI metadata for QR and barcode items."""
     item_registry = QgsGui.layoutItemGuiRegistry()
 
@@ -89,7 +83,7 @@ def register_item_gui_metadata():
         QgsLayoutItemGuiGroup(
             ITEM_CATEGORY,
             QCoreApplication.translate('QrBarCodeLayoutItem', 'Barcode Item'),
-            get_icon('barcode.svg')
+            get_icon('qr_barcode.svg')
         )
     )
 
