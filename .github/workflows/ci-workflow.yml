@@ -16,6 +16,7 @@ jobs:
         - qgis/qgis:release-3_10
     env:
       PLUGIN_NAME: qrbarcodeitem
+      TEST_DATA_DIR: $GITHUB_WORKSPACE
 
     runs-on: ubuntu-latest
     container:
