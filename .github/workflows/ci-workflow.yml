@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         qgis-version-tag:
-        - qgis/qgis:release-3_6
+        # - qgis/qgis:release-3_6
         - qgis/qgis:release-3_12
     env:
       PLUGIN_NAME: qrbarcodeitem
