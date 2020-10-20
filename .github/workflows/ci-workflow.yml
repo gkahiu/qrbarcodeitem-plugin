@@ -16,7 +16,7 @@ jobs:
         - qgis/qgis:release-3_10
     env:
       PLUGIN_NAME: qrbarcodeitem
-      BASE_TEST_DIR: /QGIS/tests/testdata/control_images/barcode/
+      BASE_TEST_DIR: /QGIS/tests/testdata/control_images
 
     runs-on: ubuntu-latest
     container:
@@ -40,9 +40,8 @@ jobs:
 
       - name: Copy control images
         run: |
-            mkdir -p -v $BASE_TEST_DIR/expected_qrcode_render
-            cp -v $GITHUB_WORKSPACE/$PLUGIN_NAME/test/data/control_images/barcode/expected_qrcode_render.png $BASE_TEST_DIR/expected_qrcode_render/
-            ls -l $BASE_TEST_DIR/expected_qrcode_render/
+            mkdir -p -v $BASE_TEST_DIR
+            cp -r -v $GITHUB_WORKSPACE/$PLUGIN_NAME/test/data/control_images/barcode $BASE_TEST_DIR
 
       - name: Run pylint
         run: pylint $PLUGIN_NAME
