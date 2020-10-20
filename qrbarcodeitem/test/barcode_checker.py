@@ -39,8 +39,7 @@ class BarcodeLayoutChecker(QgsMultiRenderChecker):
     """Compares image from code-generated layout with one in the test folder.
     Code adapted from QgsLayoutChecker in:
     QGIS/tests/src/python/qgslayoutchecker.py.
-    Adaptation specifies the 'control_image' folder based on the current
-    folder structure.
+    Uses images in the 'control_images' folder in the 'test' folder.
     """
 
     def __init__(self, test_name, layout, control_path_prefix='barcode'):
@@ -54,24 +53,6 @@ class BarcodeLayoutChecker(QgsMultiRenderChecker):
         self.control_name = 'expected_{0}'.format(self.test_name)
         self.control_path_prefix = control_path_prefix
         self.setControlPathPrefix(self.control_path_prefix)
-
-    def controlImagePath(self):
-        """Set root path of control image directory."""
-        curr_dir = os.path.abspath(os.path.dirname(__file__))
-        control_path = '{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}'.format(
-            curr_dir,
-            QDir.separator(),
-            'data',
-            QDir.separator(),
-            'control_images',
-            QDir.separator(),
-            self.control_path_prefix,
-            QDir.separator(),
-            self.control_name,
-            QDir.separator()
-        )
-
-        return control_path
 
     def test_layout(self):
         """Test layout with one in the control image in the test folder."""
@@ -94,16 +75,13 @@ class BarcodeLayoutChecker(QgsMultiRenderChecker):
         exporter.renderPage(p, 0)
         p.end()
 
-        image_path = '{0}{1}{2}{3}'.format(
+        image_path = '{0}{1}{2}.png'.format(
             QDir.tempPath(),
             QDir.separator(),
-            QFileInfo(self.test_name).baseName(),
-            '_rendered.png'
+            QFileInfo(self.test_name).baseName()
         )
         output_image.save(image_path, 'PNG')
         self.setRenderedImage(image_path)
-
-        print(self.controlImagePath())
 
         test_result = self.runTest(self.test_name, self.pixel_diff)
 
