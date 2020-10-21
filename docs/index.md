@@ -28,19 +28,21 @@ Other properties, that are common to layout items such as frame, position, size 
 ![qr_code panel](images/qr_code_panel.png "QR code panel")
 
 
-**<a name="qr_item_value"></a>Item Value**
+#### <a name="qr_item_value"></a>Item Value ####
 
-Provide the text or the expression that will be used to generate the QR code. Expressions 
-need to be surrounded by `[%` and `%]` in order to be interpreted as such. More information on 
+Provide the text or the expression, by clicking on the **Insert expression...** button, that will be used to generate the QR code. Expressions 
+need to be surrounded by `[%` and `%]` in order to be interpreted as such. 
+
+More information on 
 how to use expressions is available [here](https://docs.qgis.org/3.10/en/docs/user_manual/working_with_vector/expression.html#the-expression-string-builder).
 
 
-**<a name="qr_appearance"></a>Appearance**
+#### <a name="qr_appearance"></a>Appearance ####
 
 ![qr_color_code](images/qr_color_code_legend.png "QR color code")
 
 Define the pattern and background colors by clicking on the **Data color** and 
-*Background color* buttons respectively.
+**Background color** buttons respectively.
 
 #### Linear Barcode Item
 [Insert]
