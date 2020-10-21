@@ -13,7 +13,7 @@ email=gkahiu@gmail.com
 icon=images/qr_barcode.svg
 tags=qrcode, barcode, layout
 
-homepage=https://github.com/gkahiu/qrbarcodeitem-plugin
+homepage=https://gkahiu.github.io/qrbarcodeitem-plugin
 tracker=https://github.com/gkahiu/qrbarcodeitem-plugin/issues
 repository=https://github.com/gkahiu/qrbarcodeitem-plugin
 
