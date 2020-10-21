@@ -16,14 +16,31 @@ Using the plugin manager in QGIS:
 The QR code and linear barcode items can either be added from the `Add Item` menu or `Toolbox` toolbar in the layout window.
 
 #### QR Code Item
+* [Item Value](#qr_item_value)
+* [Appearance](#qr_appearance)
+
 The ![qr_code](images/qrcode_plus.png "QR code")`QR Code` item enables dynamic QR code images to be added to a layout. The information can be 
 generated from static alphanumeric text or expressions which can include a custom formula.
 
 Other properties, that are common to layout items such as frame, position, size etc., can be manipulated as defined in the 
 [common properties instructions](https://docs.qgis.org/3.10/en/docs/user_manual/print_composer/composer_items/composer_items_options.html#items-common-properties).
+
 ![qr_code panel](images/qr_code_panel.png "QR code panel")
 
-Test [link](#pg_usage)
+
+**<a name="qr_item_value"></a>Item Value**
+
+Provide the text or the expression that will be used to generate the QR code. Expressions 
+need to be surrounded by `[%` and `%]` in order to be interpreted as such. More information on 
+how to use expressions is available [here](https://docs.qgis.org/3.10/en/docs/user_manual/working_with_vector/expression.html#the-expression-string-builder).
+
+
+**<a name="qr_appearance"></a>Appearance**
+
+![qr_color_code](images/qr_color_code_legend.png "QR color code")
+
+Define the pattern and background colors by clicking on the **Data color** and 
+*Background color* buttons respectively.
 
 #### Linear Barcode Item
 [Insert]
