@@ -1,30 +1,40 @@
-## Welcome to GitHub Pages
+### Overview
+Add QR code and linear barcode items to a print or report layout. 
+The values for the QR code or linear barcode can be static or generated from a QGIS expression, with the 
+latter also enabling the use of the items in an Atlas context.
 
-You can use the [editor on GitHub](https://github.com/gkahiu/qrbarcodeitem-plugin/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+## Installation
+QGIS 3.6+ needs to be installed, the latest installer is available 
+on [this](https://qgis.org/en/site/forusers/download.html) page.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Using the plugin manager in QGIS:
+1. Go to **Plugins** > **Manage and Install Plugins...**
+2. Click on **Not Installed** and search for `QR Barcode Layout Item`
+3. Click on **Install Plugin** to start the download and installation process
 
-### Markdown
+## Barcode Items
+The QR code and linear barcode items can either be added from the `Add Item` menu or `Toolbox` toolbar in the layout window.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### QR Code Item
+The `QR Code` item enables dynamic QR code images to be added to a layout. These can be 
+generated from static alphanumeric text or expressions which can include a custom formula.
 
-```markdown
-Syntax highlighted code block
+Other properties, that are common to layout items such as frame, position, size etc., can be manipulated as defined in the 
+[common properties instructions](https://docs.qgis.org/3.10/en/docs/user_manual/print_composer/composer_items/composer_items_options.html#items-common-properties).
+![qr_code panel](images/qr_code_panel.png "QR code panel")
 
-# Header 1
-## Header 2
-### Header 3
+### Linear Barcode Item
+[Insert]
 
-- Bulleted
-- List
+## Issue Reporting
+If you find an issue working with the plugin, please report it so that the developers can check and 
+fix it. To post it in GitHub, use the following 
+link: https://github.com/gkahiu/qrbarcodeitem-plugin/issues.
 
-1. Numbered
-2. List
+## License
+`QR Barcode Layout Item` is free software. You can redistribute it and/or modify it under the terms of the GNU General 
+Public License version 3 (GPLv3) as published by the Free Software Foundation. 
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
+Software distributed under this 
+License is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See LICENSE 
+or https://www.gnu.org/licenses/gpl-3.0.en.html for the specific language governing rights and limitations under the License.
