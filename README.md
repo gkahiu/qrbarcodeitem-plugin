@@ -4,7 +4,7 @@ The information for the QR code or barcode can be static or generated from a QGI
 latter also enabling the use of the items in an Atlas context.
 
 ## Compatibility
-The minimum version is QGIS 3.6.
+The minimum version required is QGIS 3.6.
 
 ## Installation
 QGIS 3.6+ needs to be installed, the latest installer is available 
