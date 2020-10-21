@@ -1,9 +1,9 @@
-### Overview
+## Overview
 Add QR code and linear barcode items to a print or report layout. 
 The values for the QR code or linear barcode can be static or generated from a QGIS expression, with the 
 latter also enabling the use of these (barcode) items in an Atlas context.
 
-### Installation
+## Installation
 QGIS 3.6+ needs to be installed, the latest installer is available 
 on [this](https://qgis.org/en/site/forusers/download.html) page.
 
@@ -12,7 +12,7 @@ Using the plugin manager in QGIS:
 2. Click on **Not Installed** and search for `QR Barcode Layout Item`
 3. Click on **Install Plugin** to start the download and installation process
 
-### <a name="pg_usage"></a>Usage
+## <a name="pg_usage"></a>Usage
 The QR code and linear barcode items can either be added from the `Add Item` menu or `Toolbox` toolbar in the layout window.
 
 #### QR Code Item
@@ -28,12 +28,12 @@ Test [link](#pg_usage)
 #### Linear Barcode Item
 [Insert]
 
-### Issue Reporting
+## Issue Reporting
 If you find an issue working with the plugin, please report it so that the developers can check and 
 fix it. To post it in GitHub, use the following 
 link: https://github.com/gkahiu/qrbarcodeitem-plugin/issues.
 
-### License
+## License
 `QR Barcode Layout Item` is free software. You can redistribute it and/or modify it under the terms of the GNU General 
 Public License version 3 (GPLv3) as published by the Free Software Foundation. 
 
