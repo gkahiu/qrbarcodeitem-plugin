@@ -39,8 +39,8 @@ jobs:
 
       - name: Copy control images
         run: |
-            mkdir -p -v $BASE_TEST_DIR
-            cp -r -v $GITHUB_WORKSPACE/$PLUGIN_NAME/test/data/control_images/barcode $BASE_TEST_DIR
+            mkdir -p $BASE_TEST_DIR
+            cp -r $GITHUB_WORKSPACE/$PLUGIN_NAME/test/data/control_images/barcode $BASE_TEST_DIR
 
       - name: Run pylint
         run: pylint $PLUGIN_NAME

@@ -1,7 +1,7 @@
 ## 1. Overview
 Add QR code and linear barcode items to a print or report layout. 
-The values for the QR code or linear barcode can be static or generated from a QGIS expression, with the 
-latter also enabling the use of these (barcode) items in an Atlas context.
+The information for the QR code or barcode can be static or generated from a QGIS expression, with the 
+latter also enabling the use of the items in an Atlas context.
 
 ## 2. Installation
 QGIS 3.6+ needs to be installed, the latest installer is available 
