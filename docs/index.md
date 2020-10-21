@@ -41,7 +41,7 @@ how to use expressions is available [here](https://docs.qgis.org/3.10/en/docs/us
 
 ![qr_color_code](images/qr_color_code_legend.png "QR color code")
 
-Define the pattern/data and background colors by clicking on the **Data color** and 
+Define the pattern/data and background colors of the QR code by clicking on the **Data color** and 
 **Background color** buttons respectively.
 
 ### 3.2 Linear Barcode Item
