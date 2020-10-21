@@ -15,7 +15,7 @@ Using the plugin manager in QGIS:
 ## <a name="pg_usage"></a>Usage
 The QR code and linear barcode items can either be added from the `Add Item` menu or `Toolbox` toolbar in the layout window.
 
-#### QR Code Item
+### QR Code Item
 * [Item Value](#qr_item_value)
 * [Appearance](#qr_appearance)
 
@@ -41,10 +41,10 @@ how to use expressions is available [here](https://docs.qgis.org/3.10/en/docs/us
 
 ![qr_color_code](images/qr_color_code_legend.png "QR color code")
 
-Define the pattern and background colors by clicking on the **Data color** and 
+Define the pattern/data and background colors by clicking on the **Data color** and 
 **Background color** buttons respectively.
 
-#### Linear Barcode Item
+### Linear Barcode Item
 [Insert]
 
 ## Issue Reporting
