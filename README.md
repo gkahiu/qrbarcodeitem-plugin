@@ -1,4 +1,4 @@
-![GitHub CI Workflow](https://github.com/gkahiu/qrbarcodeitem-plugin/workflows/GitHub%20CI%20Workflow/badge.svg)
+[![GitHub CI Workflow](https://github.com/gkahiu/qrbarcodeitem-plugin/workflows/GitHub%20CI%20Workflow/badge.svg)](https://github.com/gkahiu/qrbarcodeitem-plugin/actions)
 
 # QR Barcode Layout Item
 A QGIS plugin that enables QR code and linear barcode items to be added to a print or report layout. 
