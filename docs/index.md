@@ -3,6 +3,8 @@ Add QR code and linear barcode items to a print or report layout.
 The information for the QR code or barcode can be static or generated from a QGIS expression, with the 
 latter also enabling the use of the items in an Atlas context.
 
+![layout_window](images/layout_window.png "Layout Window")
+
 ## 2. Installation
 QGIS 3.6+ needs to be installed, the latest installer is available 
 on [this](https://qgis.org/en/site/forusers/download.html) page.
