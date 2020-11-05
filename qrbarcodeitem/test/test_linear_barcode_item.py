@@ -86,4 +86,5 @@ class LinearBarcodeItemTests(unittest.TestCase):
         read_item = LinearBarcodeLayoutItem(read_layout)
         read_status = read_item.readXml(item_el, doc, QgsReadWriteContext())
         self.assertTrue(read_status)
+        self.assertEqual(read_item.barcode_type, barcode_type)
 
