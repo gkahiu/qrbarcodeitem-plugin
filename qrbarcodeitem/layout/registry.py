@@ -22,10 +22,16 @@ from qgis.core import QgsApplication
 from qrbarcodeitem.layout.qrcode_item import (
     QrCodeLayoutItemMetadata
 )
+from qrbarcodeitem.layout.linear_barcode_item import (
+    LinearBarcodeLayoutItemMetadata
+)
 
 
 def register_barcode_items():
     """Register barcode items in the app item registry."""
     QgsApplication.layoutItemRegistry().addLayoutItemType(
         QrCodeLayoutItemMetadata()
+    )
+    QgsApplication.layoutItemRegistry().addLayoutItemType(
+        LinearBarcodeLayoutItemMetadata()
     )

@@ -44,7 +44,6 @@ class CodeValueWidget(QWidget):
         self._value_text_edit.textChanged.connect(
             self._on_code_value_changed
         )
-
         self._exp_btn = QPushButton(
             self.tr('Insert expression...')
         )
@@ -54,7 +53,6 @@ class CodeValueWidget(QWidget):
         self._exp_btn.clicked.connect(
             self._on_insert_expression
         )
-
         layout = QVBoxLayout()
         layout.addWidget(self._value_text_edit)
         layout.addWidget(self._exp_btn)

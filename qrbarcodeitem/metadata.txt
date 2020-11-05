@@ -7,7 +7,7 @@ qgisMinimumVersion=3.6
 qgisMaximumVersion=3.99
 version=0.1
 
-author=John Gitau
+author=John Kahiu
 email=gkahiu@gmail.com
 
 icon=images/qr_barcode.svg
@@ -17,5 +17,5 @@ homepage=https://gkahiu.github.io/qrbarcodeitem-plugin
 tracker=https://github.com/gkahiu/qrbarcodeitem-plugin/issues
 repository=https://github.com/gkahiu/qrbarcodeitem-plugin
 
-experimental=True
+experimental=False
 deprecated=False

@@ -28,6 +28,10 @@ from qrbarcodeitem.layout.qrcode_item import (
     QR_CODE_TYPE,
     QrCodeLayoutItem
 )
+from qrbarcodeitem.layout.linear_barcode_item import (
+    LINEAR_BARCODE_TYPE,
+    LinearBarcodeLayoutItem
+)
 from qrbarcodeitem.utils import (
     get_icon
 )
@@ -48,15 +52,18 @@ class QrCodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
     def createItemWidget(self, item): # pylint: disable=missing-function-docstring, no-self-use
         return QrCodeLayoutItemWidget(None, item)
 
+    def createItem(self, layout): # pylint: disable=missing-function-docstring, no-self-use
+        return QrCodeLayoutItem(layout)
+
     def creationIcon(self): # pylint: disable=missing-function-docstring, no-self-use
         return get_icon('qrcode_plus.svg')
 
 
-class BarCodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
-    """Stores GUI metadata for a barcode layout item."""
+class LinearBarcodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
+    """Stores GUI metadata for a linear barcode layout item."""
     def __init__(self):
         super().__init__(
-            234567,
+            LINEAR_BARCODE_TYPE,
             QCoreApplication.translate(
                 'QrBarCodeLayoutItem',
                 'Linear Barcode'
@@ -68,7 +75,7 @@ class BarCodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
         return QgsLayoutItemBaseWidget(item)
 
     def createItem(self, layout): # pylint: disable=missing-function-docstring, no-self-use
-        return QrCodeLayoutItem(layout)
+        return LinearBarcodeLayoutItem(layout)
 
     def creationIcon(self): # pylint: disable=missing-function-docstring, no-self-use
         return get_icon('barcode_plus.svg')
@@ -87,10 +94,10 @@ def register_items_gui_metadata():
         )
     )
 
-    # Add barcode gui metadata
-    barcode_meta = BarCodeLayoutItemGuiMetadata()
-    item_registry.addLayoutItemGuiMetadata(barcode_meta)
+    # Add linear barcode gui metadata
+    linear_barcode_meta = LinearBarcodeLayoutItemGuiMetadata()
+    item_registry.addLayoutItemGuiMetadata(linear_barcode_meta)
 
-    # Add QR Code gui metadata
+    # Add QR code gui metadata
     qr_code_meta = QrCodeLayoutItemGuiMetadata()
     item_registry.addLayoutItemGuiMetadata(qr_code_meta)
