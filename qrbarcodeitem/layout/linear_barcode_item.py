@@ -104,7 +104,7 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
     def _read_props_from_el(self, el, document, context):
         """Reads item attributes."""
         self._barcode_type = str(
-            el.attribute(self._ATTR_BARCODE_TYPE, self._DEF_BARCODE_TYPE)
+            el.attribute(self._ATTR_BARCODE_TYPE, self.DEF_BARCODE_TYPE)
         )
         self.update_item()
 

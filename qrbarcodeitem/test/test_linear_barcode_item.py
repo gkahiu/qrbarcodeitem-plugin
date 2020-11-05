@@ -78,3 +78,12 @@ class LinearBarcodeItemTests(unittest.TestCase):
         status = item.writeXml(el, doc, QgsReadWriteContext())
         self.assertTrue(status)
 
+        # Test read
+        self.assertTrue(el.hasChildNodes())
+        item_el = el.firstChildElement()
+        self.assertFalse(item_el.isNull())
+        read_layout = create_layout('Test XML read')
+        read_item = LinearBarcodeLayoutItem(read_layout)
+        read_status = read_item.readXml(item_el, doc, QgsReadWriteContext())
+        self.assertTrue(read_status)
+
