@@ -41,6 +41,7 @@ class CodeValueWidget(QWidget):
         super().__init__(item_widget)
         self._item_widget = item_widget
         self._value_text_edit = QPlainTextEdit()
+        self._value_text_edit.setWordWrapMode(QPlainTextEdit.WidgetWidth)
         self._value_text_edit.textChanged.connect(
             self._on_code_value_changed
         )

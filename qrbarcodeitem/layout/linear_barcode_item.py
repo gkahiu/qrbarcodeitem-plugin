@@ -35,22 +35,26 @@ from qrbarcodeitem.utils import (
     get_icon
 )
 
-LINEAR_BARCODE_TYPE = QgsLayoutItemRegistry.PluginItem + 2345
+LINEAR_BARCODE_TYPE = QgsLayoutItemRegistry.PluginItem + 2346
 
 
 class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
     """Item for rendering a linear barcode."""
 
-    _ATTR_BG_COLOR = 'codeBackgroundColor'
-    _ATTR_DATA_COLOR = 'dataColor'
+    _ATTR_BG_COLOR = 'backColor'
+    _ATTR_FG_COLOR = 'foreColor'
     _ATTR_BARCODE_TYPE = 'linearBarcodeType'
+    _ATTR_INCLUDE_TEXT = 'renderText'
     _DEF_BG_COLOR = '#FFFFFF'
-    _DEF_DATA_COLOR = '#000000'
-    DEF_BARCODE_TYPE = 'code128'
+    _DEF_FG_COLOR = '#000000'
+    _DEF_BARCODE_TYPE = 'code128'
 
     def __init__(self, *args):
         super().__init__(*args)
-        self._barcode_type = self.DEF_BARCODE_TYPE
+        self._barcode_type = self._DEF_BARCODE_TYPE
+        self._background_color = self._DEF_BG_COLOR
+        self._foreground_color = self._DEF_FG_COLOR
+        self._render_text = True
 
     @property
     def barcode_type(self):
@@ -78,12 +82,24 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
 
     def _gen_image(self, file_path):
         """Generate QR Code based on the computed value."""
+        # Options for the python-barcode SVG writer
+        writer_options = {
+            'quiet_zone': 1.5,
+            'font_size': 4,
+            'background': self._background_color,
+            'foreground': self._foreground_color,
+            'write_text': self._render_text
+        }
+
         try:
             linear_barcode = barcode.get(
                 self._barcode_type,
                 self.computed_value()
             )
-            linear_barcode.save(file_path)
+            linear_barcode.save(
+                file_path,
+                writer_options
+            )
         except BarcodeError as bce:
             raise BarcodeException(
                 str(bce)
@@ -98,13 +114,25 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
         el.setAttribute(
             self._ATTR_BARCODE_TYPE, str(self._barcode_type)
         )
+        el.setAttribute(self._ATTR_FG_COLOR, str(self._foreground_color))
+        el.setAttribute(self._ATTR_BG_COLOR, str(self._background_color))
+        el.setAttribute(self._ATTR_INCLUDE_TEXT, str(self._render_text))
 
         return True
 
     def _read_props_from_el(self, el, document, context):
         """Reads item attributes."""
         self._barcode_type = str(
-            el.attribute(self._ATTR_BARCODE_TYPE, self.DEF_BARCODE_TYPE)
+            el.attribute(self._ATTR_BARCODE_TYPE, self._DEF_BARCODE_TYPE)
+        )
+        self._background_color = str(
+            el.attribute(self._ATTR_BG_COLOR, self._DEF_BG_COLOR)
+        )
+        self._foreground_color = str(
+            el.attribute(self._ATTR_FG_COLOR, self._DEF_FG_COLOR)
+        )
+        self._render_text = self._str_to_bool(
+            el.attribute(self._ATTR_INCLUDE_TEXT, 'True')
         )
         self.update_item()
 

@@ -26,7 +26,7 @@ from qgis.core import (
 from qgis.PyQt.QtXml import (
     QDomDocument
 )
-
+from qgis.PyQt.QtCore import QRectF
 from qrbarcodeitem.layout.linear_barcode_item import (
     LINEAR_BARCODE_TYPE,
     LinearBarcodeLayoutItem
@@ -35,6 +35,7 @@ from qrbarcodeitem.layout.registry import register_barcode_items
 from qrbarcodeitem.test.utilities import (
     create_layout
 )
+from qrbarcodeitem.test.barcode_checker import BarcodeLayoutChecker
 
 
 class LinearBarcodeItemTests(unittest.TestCase):
@@ -48,7 +49,7 @@ class LinearBarcodeItemTests(unittest.TestCase):
         """Register items in app registry."""
         register_barcode_items()
 
-    def test_item_registered(self):
+    def test_item_in_registry(self):
         """Test linear barcode item exist in the registry."""
         items = self._item_registry.itemTypes()
         self.assertIn(LINEAR_BARCODE_TYPE, items)
@@ -61,7 +62,7 @@ class LinearBarcodeItemTests(unittest.TestCase):
         # Assert default item properties
         self.assertEqual(
             item.barcode_type,
-            LinearBarcodeLayoutItem.DEF_BARCODE_TYPE
+            LinearBarcodeLayoutItem._DEF_BARCODE_TYPE
         )
 
     def test_read_write(self):
@@ -87,4 +88,17 @@ class LinearBarcodeItemTests(unittest.TestCase):
         read_status = read_item.readXml(item_el, doc, QgsReadWriteContext())
         self.assertTrue(read_status)
         self.assertEqual(read_item.barcode_type, barcode_type)
+
+    def test_code39_render(self):
+        """Test rendering of code39 type in layout and compare image."""
+        layout = create_layout('Test Render of Code 39')
+        item = LinearBarcodeLayoutItem(layout)
+        item.attemptSetSceneRect(QRectF(20, 20, 130, 60))
+        item.setFrameEnabled(True)
+        item.code_value = 'ABCD-123456'
+        layout.addLayoutItem(item)
+
+        checker = BarcodeLayoutChecker('code39_render', layout)
+        result, message = checker.test_layout() # pylint: disable=unused-variable
+        self.assertTrue(result)
 
