@@ -12,7 +12,7 @@ jobs:
       matrix:
         qgis-version-tag:
         # - qgis/qgis:release-3_6
-        - qgis/qgis:release-3_12
+        - qgis/qgis:release-3_14
     env:
       PLUGIN_NAME: qrbarcodeitem
       BASE_TEST_DIR: /QGIS/tests/testdata/control_images
