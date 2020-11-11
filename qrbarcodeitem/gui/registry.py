@@ -80,6 +80,9 @@ class LinearBarcodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
     def creationIcon(self): # pylint: disable=missing-function-docstring, no-self-use
         return get_icon('barcode_plus.svg')
 
+    def newItemAddedToLayout(self, item):
+        item.code_value = 'ABCD-123456'
+
 
 def register_items_gui_metadata():
     """Registers GUI metadata for QR and barcode items."""
