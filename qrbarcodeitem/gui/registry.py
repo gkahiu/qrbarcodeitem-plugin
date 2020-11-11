@@ -72,7 +72,7 @@ class LinearBarcodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
         )
 
     def createItemWidget(self, item): # pylint: disable=missing-function-docstring, no-self-use
-        return QgsLayoutItemBaseWidget(item)
+        return QgsLayoutItemBaseWidget(None, item)
 
     def createItem(self, layout): # pylint: disable=missing-function-docstring, no-self-use
         return LinearBarcodeLayoutItem(layout)

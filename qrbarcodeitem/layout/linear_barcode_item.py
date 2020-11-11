@@ -47,7 +47,7 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
     _ATTR_INCLUDE_TEXT = 'renderText'
     _DEF_BG_COLOR = '#FFFFFF'
     _DEF_FG_COLOR = '#000000'
-    _DEF_BARCODE_TYPE = 'code128'
+    _DEF_BARCODE_TYPE = 'code39'
 
     def __init__(self, *args):
         super().__init__(*args)
@@ -96,8 +96,10 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
                 self._barcode_type,
                 self.computed_value()
             )
+
+            # barcode lib automatically add '.svg' suffix
             linear_barcode.save(
-                file_path,
+                file_path.replace('.svg', ''),
                 writer_options
             )
         except BarcodeError as bce:
