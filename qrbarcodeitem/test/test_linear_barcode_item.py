@@ -96,6 +96,7 @@ class LinearBarcodeItemTests(unittest.TestCase):
         item.attemptSetSceneRect(QRectF(20, 20, 130, 60))
         item.setFrameEnabled(True)
         item.code_value = 'ABCD-123456'
+        item.barcode_type = 'code39'
         layout.addLayoutItem(item)
 
         checker = BarcodeLayoutChecker('code39_render', layout)
