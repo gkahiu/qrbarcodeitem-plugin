@@ -49,4 +49,10 @@ jobs:
         run: |
           sh -c "/usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset -nolisten tcp &"
           qgis_testrunner.sh $PLUGIN_NAME.test.test_suite
+
+      - name: Archive render results
+        uses: actions/upload-artifact@v2
+        with:
+          name: barcode-render-results
+          path: /tmp/*.png
       
