@@ -97,7 +97,6 @@ class QRCodeItemTests(unittest.TestCase):
         self.assertEqual(read_item.bg_color, bg_color)
         self.assertEqual(read_item.data_color, data_color)
 
-    '''
     def test_qrcode_render(self):
         """Test rendering of QR code in layout and compare image."""
         layout = create_layout('Test QR Code Item Render')
@@ -112,7 +111,6 @@ class QRCodeItemTests(unittest.TestCase):
         checker = BarcodeLayoutChecker('qrcode_render', layout)
         result, message = checker.test_layout() # pylint: disable=unused-variable
         self.assertTrue(result)
-    '''
 
 
 if __name__ == '__main__':

@@ -96,6 +96,7 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
                 self._barcode_type,
                 self.computed_value()
             )
+            print(file_path)
 
             # barcode lib automatically add '.svg' suffix
             linear_barcode.save(

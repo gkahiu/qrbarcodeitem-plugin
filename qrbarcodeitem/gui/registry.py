@@ -17,7 +17,7 @@ email                : gkahiu@gmail.com
  *                                                                         *
  ***************************************************************************/
 """
-from qgis.PyQt.QtCore import QCoreApplication, QRectF
+from qgis.PyQt.QtCore import QCoreApplication
 from qgis.gui import (
     QgsGui,
     QgsLayoutItemAbstractGuiMetadata,
@@ -79,12 +79,6 @@ class LinearBarcodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
 
     def creationIcon(self): # pylint: disable=missing-function-docstring, no-self-use
         return get_icon('barcode_plus.svg')
-
-    def newItemAddedToLayout(self, item): # pylint: disable=missing-function-docstring, no-self-use
-        item.attemptSetSceneRect(QRectF(20, 20, 130, 60))
-        item.setFrameEnabled(True)
-        item.code_value = 'ABCD-123456'
-        item.barcode_type = 'code39'
 
 
 def register_items_gui_metadata():

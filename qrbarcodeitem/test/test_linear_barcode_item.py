@@ -101,5 +101,5 @@ class LinearBarcodeItemTests(unittest.TestCase):
 
         checker = BarcodeLayoutChecker('code39_render', layout)
         result, message = checker.test_layout() # pylint: disable=unused-variable
-        self.assertFalse(result)
+        self.assertTrue(result)
 

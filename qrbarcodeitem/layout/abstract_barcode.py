@@ -135,7 +135,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
             self.setPicturePath('')
             return status
 
-        svg_file = QTemporaryFile('qrbarcode_temp.XXXXXX')
+        svg_file = QTemporaryFile()
         try:
             if svg_file.open():
                 svg_path = '{0}.svg'.format(svg_file.fileName())

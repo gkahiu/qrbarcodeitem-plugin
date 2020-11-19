@@ -55,4 +55,5 @@ jobs:
         with:
           name: barcode-render-results
           path: /tmp/*.png
+          retention-days: 3
       
