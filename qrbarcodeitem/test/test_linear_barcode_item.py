@@ -93,13 +93,16 @@ class LinearBarcodeItemTests(unittest.TestCase):
         """Test rendering of code39 type in layout and compare image."""
         layout = create_layout('Test Render of Code 39')
         item = LinearBarcodeLayoutItem(layout)
-        item.attemptSetSceneRect(QRectF(20, 20, 130, 60))
+        item.attemptSetSceneRect(QRectF(20, 20, 130, 50))
         item.setFrameEnabled(True)
         item.code_value = 'ABCD-123456'
         item.barcode_type = 'code39'
+        # Disable rendering of text as spacing is inconsistent across
+        # Windows, Linux platforms
+        item.render_text = False
         layout.addLayoutItem(item)
 
         checker = BarcodeLayoutChecker('code39_render', layout)
         result, message = checker.test_layout() # pylint: disable=unused-variable
-        self.assertFalse(result)
+        self.assertTrue(result)
 

@@ -76,6 +76,26 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
             self._barcode_type = type_id
             self.update_item()
 
+    @property
+    def render_text(self):
+        """
+        :return: Return True if text should be rendered below the barcode
+        modules.
+        :rtype: bool
+        """
+        return self._render_text
+
+    @render_text.setter
+    def render_text(self, render):
+        """
+        Set if the barcode text should be drawn below the barcode modules.
+        :param render: True to render, False to exclude barcode text.
+        :type render: bool
+        """
+        if self._render_text != render:
+            self._render_text = render
+            self.update_item()
+
     def icon(self): # pylint: disable=no-self-use
         """Return item's icon."""
         return get_icon('barcode.svg')
@@ -96,7 +116,6 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
                 self._barcode_type,
                 self.computed_value()
             )
-            print(file_path)
 
             # barcode lib automatically add '.svg' suffix
             linear_barcode.save(
