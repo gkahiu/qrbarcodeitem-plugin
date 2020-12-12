@@ -62,7 +62,7 @@ class QrCodeLayoutItemWidget(QgsLayoutItemBaseWidget): # pylint: disable=too-few
         self._cd_value_widget.value_changed.connect(
             self._on_code_value_changed
         )
-        value_groupbox = QgsCollapsibleGroupBoxBasic(self.tr('Item Value'))
+        value_groupbox = QgsCollapsibleGroupBoxBasic(self.tr('Data'))
         gp_layout = QVBoxLayout()
         gp_layout.setContentsMargins(0, 0, 0, 0)
         gp_layout.addWidget(self._cd_value_widget)

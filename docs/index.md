@@ -18,10 +18,10 @@ Using the plugin manager in QGIS:
 The QR code and linear barcode items can either be added from the `Add Item` menu or `Toolbox` toolbar in the layout window.
 
 ### 3.1 QR Code Item
-* [Item Value](#qr_item_value)
+* [Barcode Data](#qr_code_data)
 * [Appearance](#qr_appearance)
 
-The ![qr_code](images/qrcode_plus.png "QR code")`QR Code` item enables dynamically-generated QR code images to be added to a layout. The information can be 
+The ![qr_code](images/qrcode_plus.png "QR code") `QR Code` item enables dynamically-generated QR code images to be added to a layout. The information can be 
 generated from alphanumeric text or expressions which can include a custom formula.
 
 Other properties, that are common to layout items such as frame, position, size etc., can be manipulated as defined in the 
@@ -30,7 +30,7 @@ Other properties, that are common to layout items such as frame, position, size 
 ![qr_code panel](images/qr_code_panel.png "QR code panel")
 
 
-#### <a name="qr_item_value"></a>Item Value ####
+#### <a name="qr_code_data"></a>Data ####
 
 Provide the text or the expression, by clicking on the **Insert expression...** button, that will be used to generate the QR code. Expressions 
 need to be surrounded by `[%` and `%]` in order to be interpreted as such. 
@@ -43,14 +43,36 @@ how to use expressions is available [here](https://docs.qgis.org/3.10/en/docs/us
 
 ![qr_color_code](images/qr_color_code_legend.png "QR color code")
 
-Define the pattern/data and background colors of the QR code by clicking on the **Data color** and 
+Define the pattern/data and background colors of the QR code by clicking the **Data color** and 
 **Background color** buttons respectively.
 
 ### 3.2 Linear Barcode Item
-[Insert]
+* [Properties](#linear_barcode_props)
+* [Barcode Data](#linear_barcode_data)
+
+![linear_barcode panel](images/linear_barcode_panel.png "Linear barcode panel")
+
+The ![linear_barcode](images/barcode_plus.png "Linear Barcode") `Linear Barcode` item enables dynamically-generated one-dimensional barcodes to be added to a layout. 
+It supports the most commonly used linear barcode symbologies, such as as Code 39, EAN, UPC, GS1-128 etc., to be generated from alphanumeric text or expressions depending 
+on the allowed types for the given symbology.
+
+Similarly, common properties for a layout item can be defined for the linear barcode item.
+
+#### <a name="linear_barcode_props"></a>Properties ####
+
+Set the specific characteristics of the linear barcode symbology. These include:
+* **Linear barcode type** - Choose the linear barcode type. The supported types are Code 39, Code 128, GS1-128
+* **Add checksum** - Select to calculate and append a checksum in the barcode. Depending on the barcode type, the checksum will be calculated automatically. For some types, 
+such as Code 39, the checksum is optional.
+* **Render barcode text** - Select to render text under the barcode.
+
+#### <a name="linear_barcode_data"></a>Data ####
+
+Provide the text or specify a custom expression, by clicking on the **Insert expression...** button, that will be used to generate the linear barcode. Expressions 
+need to be surrounded by `[%` and `%]` in order to be interpreted as such. 
 
 ## 4. Issue Reporting
-If you find an issue working with the plugin, please report it so that the developers can check and 
+If you find an issue working with the plugin, please report it so that the developer can check and 
 fix it. To post it in GitHub, use the following 
 link: https://github.com/gkahiu/qrbarcodeitem-plugin/issues.
 

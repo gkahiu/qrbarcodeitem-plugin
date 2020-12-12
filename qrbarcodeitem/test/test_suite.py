@@ -22,6 +22,7 @@ import sys
 
 from qrbarcodeitem.test.test_qrcode_item import QRCodeItemTests
 from qrbarcodeitem.test.test_linear_barcode_item import LinearBarcodeItemTests
+from qrbarcodeitem.test.test_linear_metadata import LinearBarcodeMetadataTests
 
 
 def run_all():
@@ -29,6 +30,7 @@ def run_all():
     suite = unittest.TestSuite()
     suite.addTests(unittest.makeSuite(QRCodeItemTests))
     suite.addTests(unittest.makeSuite(LinearBarcodeItemTests))
+    suite.addTests(unittest.makeSuite(LinearBarcodeMetadataTests))
 
     runner = unittest.TextTestRunner(verbosity=2, stream=sys.stdout)
     runner.run(suite)

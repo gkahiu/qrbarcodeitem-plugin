@@ -45,6 +45,8 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
     _ATTR_FG_COLOR = 'foreColor'
     _ATTR_BARCODE_TYPE = 'linearBarcodeType'
     _ATTR_INCLUDE_TEXT = 'renderText'
+    _ATTR_CHECKSUM = 'addChecksum'
+    _ATTR_MANUAL_CHECKSUM = 'manualChecksum'
     _DEF_BG_COLOR = '#FFFFFF'
     _DEF_FG_COLOR = '#000000'
     _DEF_BARCODE_TYPE = 'code39'
@@ -54,6 +56,8 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
         self._barcode_type = self._DEF_BARCODE_TYPE
         self._background_color = self._DEF_BG_COLOR
         self._foreground_color = self._DEF_FG_COLOR
+        self._add_checksum = False
+        self._supports_manual_checksum = False
         self._render_text = True
 
     @property
@@ -77,9 +81,55 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
             self.update_item()
 
     @property
+    def add_checksum(self):
+        """
+        :return: Returns True if a checksum value should be included in the
+        barcode data, else False. This only applies to those linear barcode
+        types that support a checksum.
+        :rtype: bool
+        """
+        return self._add_checksum
+
+    @add_checksum.setter
+    def add_checksum(self, status):
+        """
+        Set True to add checksum value in the barcode data, else False. This
+        only applies to those linear barcode
+        types that support a checksum.
+        :param status: Flag to add a checksum value, if supported for the
+        given linear barcode type.
+        :type status: bool
+        """
+        if self._add_checksum != status:
+            self._add_checksum = status
+            self.update_item()
+
+    @property
+    def supports_manual_checksum(self):
+        """
+        :return: Returns True if the given linear barcode type supports the
+        inclusion of a checksum.
+        :rtype: bool
+        """
+        return self._supports_manual_checksum
+
+    @supports_manual_checksum.setter
+    def supports_manual_checksum(self, status):
+        """
+        Specify whether a given linear barcode type supports the inclusion
+        of a checksum. This is not defined in the UI but rather by the
+        metadata definition for each supported linear barcode type.
+        :param status: Flag to indicate whether the given barcode type
+        supports a checksum.
+        :type status: bool
+        """
+        if self._supports_manual_checksum != status:
+            self._supports_manual_checksum = status
+
+    @property
     def render_text(self):
         """
-        :return: Return True if text should be rendered below the barcode
+        :return: Returns True if text should be rendered below the barcode
         modules.
         :rtype: bool
         """
@@ -96,13 +146,26 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
             self._render_text = render
             self.update_item()
 
+    def barcode_gen_options(self):
+        """
+        :return: Returns the custom options for generating the linear barcode.
+        :rtype: dict
+        """
+        opts = {}
+
+        # For checksum
+        if self._supports_manual_checksum:
+            opts['add_checksum'] = self._add_checksum
+
+        return opts
+
     def icon(self): # pylint: disable=no-self-use
         """Return item's icon."""
         return get_icon('barcode.svg')
 
     def _gen_image(self, file_path):
         """Generate QR Code based on the computed value."""
-        # Options for the python-barcode SVG writer
+        # Options for the barcode SVG writer
         writer_options = {
             'quiet_zone': 1.5,
             'font_size': 4,
@@ -110,11 +173,13 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
             'foreground': self._foreground_color,
             'write_text': self._render_text
         }
+        build_opts = self.barcode_gen_options()
 
         try:
             linear_barcode = barcode.get(
                 self._barcode_type,
-                self.computed_value()
+                self.computed_value(),
+                options=build_opts
             )
 
             # barcode lib automatically add '.svg' suffix
@@ -139,6 +204,11 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
         el.setAttribute(self._ATTR_FG_COLOR, str(self._foreground_color))
         el.setAttribute(self._ATTR_BG_COLOR, str(self._background_color))
         el.setAttribute(self._ATTR_INCLUDE_TEXT, str(self._render_text))
+        el.setAttribute(self._ATTR_CHECKSUM, str(self._add_checksum))
+        el.setAttribute(
+            self._ATTR_MANUAL_CHECKSUM,
+            str(self._supports_manual_checksum)
+        )
 
         return True
 
@@ -155,6 +225,12 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
         )
         self._render_text = self._str_to_bool(
             el.attribute(self._ATTR_INCLUDE_TEXT, 'True')
+        )
+        self._add_checksum = self._str_to_bool(
+            el.attribute(self._ATTR_CHECKSUM, 'False')
+        )
+        self._supports_manual_checksum = self._str_to_bool(
+            el.attribute(self._ATTR_MANUAL_CHECKSUM, 'False')
         )
         self.update_item()
 

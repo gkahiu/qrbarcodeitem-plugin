@@ -21,7 +21,6 @@ from qgis.PyQt.QtCore import QCoreApplication
 from qgis.gui import (
     QgsGui,
     QgsLayoutItemAbstractGuiMetadata,
-    QgsLayoutItemBaseWidget,
     QgsLayoutItemGuiGroup
 )
 from qrbarcodeitem.layout.qrcode_item import (
@@ -36,6 +35,8 @@ from qrbarcodeitem.utils import (
     get_icon
 )
 from qrbarcodeitem.gui.qrcode_widget import QrCodeLayoutItemWidget
+from qrbarcodeitem.gui.linear_barcode_widget import \
+    LinearBarcodeLayoutItemWidget
 
 ITEM_CATEGORY = 'qrbarcodeitem'
 
@@ -72,7 +73,7 @@ class LinearBarcodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
         )
 
     def createItemWidget(self, item): # pylint: disable=missing-function-docstring, no-self-use
-        return QgsLayoutItemBaseWidget(None, item)
+        return LinearBarcodeLayoutItemWidget(None, item)
 
     def createItem(self, layout): # pylint: disable=missing-function-docstring, no-self-use
         return LinearBarcodeLayoutItem(layout)

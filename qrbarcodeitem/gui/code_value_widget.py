@@ -20,12 +20,14 @@ email                : gkahiu@gmail.com
 """
 from qgis.PyQt.QtWidgets import (
     QDialog,
-    QPlainTextEdit,
+    QTextEdit,
     QPushButton,
     QVBoxLayout,
     QWidget
 )
-from qgis.PyQt.QtCore import pyqtSignal
+from qgis.PyQt.QtCore import (
+    pyqtSignal
+)
 from qgis.gui import (
     QgsExpressionBuilderDialog,
     QgsLayoutItemBaseWidget
@@ -40,8 +42,8 @@ class CodeValueWidget(QWidget):
     def __init__(self, item_widget):
         super().__init__(item_widget)
         self._item_widget = item_widget
-        self._value_text_edit = QPlainTextEdit()
-        self._value_text_edit.setLineWrapMode(QPlainTextEdit.WidgetWidth)
+        self._value_text_edit = QTextEdit()
+        self._value_text_edit.setLineWrapMode(QTextEdit.WidgetWidth)
         self._value_text_edit.textChanged.connect(
             self._on_code_value_changed
         )
@@ -87,6 +89,20 @@ class CodeValueWidget(QWidget):
 
         self._value_text_edit.setPlainText(val)
 
+    def highlight_invalid_data(self, invalid):
+        """
+        Highlights barcode data in red to indicate invalidity.
+        :param invalid: True to highlight in red, else False to restore
+        default color.
+        :type invalid: bool
+        """
+        if invalid:
+            stylesheet = 'color:#ff0000; font-weight: bold;'
+        else:
+            stylesheet = ''
+
+        self._value_text_edit.setStyleSheet(stylesheet)
+
     def _on_code_value_changed(self):
         # Slot raised when the code value changes.
         code_txt = self.code_value
@@ -116,7 +132,7 @@ class CodeValueWidget(QWidget):
             'generic',
             exp_ctx
         )
-        exp_dlg.setWindowTitle(self.tr('Insert Code Expression'))
+        exp_dlg.setWindowTitle(self.tr('Insert Expression for Barcode Data'))
         exp_dlg.setAllowEvalErrors(False)
         if exp_dlg.exec_() == QDialog.Accepted:
             exp = exp_dlg.expressionText()

@@ -98,7 +98,7 @@ class LinearBarcodeItemTests(unittest.TestCase):
         item.code_value = 'ABCD-123456'
         item.barcode_type = 'code39'
         # Disable rendering of text as spacing is inconsistent across
-        # Windows, Linux platforms
+        # Windows, Linux platforms resulting in test failures
         item.render_text = False
         layout.addLayoutItem(item)
 

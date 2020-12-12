@@ -27,6 +27,8 @@ from qgis.PyQt.QtCore import (
 )
 
 from qrbarcodeitem.layout.registry import register_barcode_items
+from qrbarcodeitem.layout.linear_metadata import \
+    register_linear_barcode_metadata
 from qrbarcodeitem.gui.registry import register_items_gui_metadata
 
 
@@ -80,6 +82,9 @@ class QRBarCodePluginLoader:
         """
         register_barcode_items()
         register_items_gui_metadata()
+
+        # Register metadata for the different linear barcode types
+        register_linear_barcode_metadata()
 
     def unregister_layout_items(self):
         """Unregister QR and bar code layout."""

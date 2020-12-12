@@ -55,3 +55,33 @@ def color_from_name(clr_name, default='#000000'):
         clr.setNamedColor(default)
 
     return clr
+
+
+class Singleton:
+    """
+    Decorator for enabling a class to behave as a singleton object.
+    """
+    def __init__(self, decorated):
+        self._decorated = decorated
+
+    def instance(self, *args, **kwargs):
+        """
+        Used to return an instance of the Singleton object.
+        """
+        try:
+            return self._instance
+        # Catch null property exception and create a new instance of the class
+        except AttributeError:
+            self._instance = self._decorated(*args, **kwargs)
+            return self._instance
+
+    def __call__(self, *args, **kwargs):
+        raise TypeError(
+            'Singleton must be accessed through the instance method'
+        )
+
+    def clean_up(self):
+        """
+        Clear the instance object.
+        """
+        del self._instance

@@ -104,10 +104,20 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
         using the current expression context.
         :rtype: str
         """
+        return self.evaluate_expression(self._code_value)
+
+    def evaluate_expression(self, value):
+        """
+        Computes the resulting value based on the current expression context.
+        :param value: Value to evaluate.
+        :type value: str
+        :return: Returns the value based on the current expression context.
+        :rtype: str
+        """
         exp_ctx = self.createExpressionContext()
 
         return QgsExpression.replaceExpressionText(
-            self._code_value,
+            value,
             exp_ctx
         )
 
