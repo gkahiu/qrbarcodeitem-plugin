@@ -1,6 +1,6 @@
 ## 1. Overview
 Add QR code and linear barcode items to a print or report layout. 
-The information for the QR code or barcode can be static or generated from a QGIS expression, with the 
+The data for the QR code or linear barcode item can be static or generated from a QGIS expression, with the 
 latter also enabling the use of the items in an Atlas context.
 
 ![layout_window](images/layout_window.png "Layout Window")
@@ -53,8 +53,8 @@ Define the pattern/data and background colors of the QR code by clicking the **D
 ![linear_barcode panel](images/linear_barcode_panel.png "Linear barcode panel")
 
 The ![linear_barcode](images/barcode_plus.png "Linear Barcode") `Linear Barcode` item enables dynamically-generated one-dimensional barcodes to be added to a layout. 
-It supports the most commonly used linear barcode symbologies, such as as Code 39, EAN, UPC, GS1-128 etc., to be generated from alphanumeric text or expressions depending 
-on the allowed types for the given symbology.
+It supports the most commonly used linear barcode symbologies, such as as Code 39, EAN, UPC, GS1-128 etc., generated from alphanumeric text or expressions depending 
+on the allowed types for the given symbology type.
 
 Similarly, common properties for a layout item can be defined for the linear barcode item.
 
