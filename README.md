@@ -2,7 +2,7 @@
 
 # QR Barcode Layout Item
 A QGIS plugin that enables QR code and linear barcode items to be added to a print or report layout. 
-The information for the QR code or barcode can be static or generated from a QGIS expression, with the 
+The data for the QR code or linear barcode can be static or generated from a QGIS expression, with the 
 latter also enabling the use of the items in an Atlas context.
 
 ![layout_window](docs/images/layout_window.png "Layout Window")
