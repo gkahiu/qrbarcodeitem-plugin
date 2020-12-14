@@ -15,10 +15,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download asset
+      - name: Download repo
         run: curl -L https://api.github.com/repos/$OWNER/$REPO/zipball/$GITHUB_REF -o $LOCAL_FILE_NAME
 
-      - name: Install dependencies
-        run: |
-            python3 -m pip install --upgrade pip
-            python3 -m pip install -r requirements.txt
+      - name: Archive plugin file
+        uses: actions/upload-artifact@v2
+        with:
+          name: plugin-file
+          path: $LOCAL_FILE_NAME
+          retention-days: 3
