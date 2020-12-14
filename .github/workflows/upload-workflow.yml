@@ -1,0 +1,24 @@
+name: Plugin Upload Workflow
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    name: Download, Repackage and Upload Plugin
+    env:
+      OWNER: gkahiu
+      REPO: qrbarcodeitem-plugin
+      LOCAL_FILE_NAME: qrcode_plugin.zip
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download asset
+        run: curl -L https://api.github.com/repos/$OWNER/$REPO/zipball/$GITHUB_REF -o $LOCAL_FILE_NAME
+
+      - name: Install python dependencies
+          run: |
+            python3 -m pip install --upgrade pip
+            python3 -m pip install -r requirements.txt
