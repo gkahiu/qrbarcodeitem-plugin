@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - name: Download asset
-        run: curl -v -L https://api.github.com/repos/$OWNER/$REPO/zipball/0.0.99 -o $LOCAL_FILE_NAME
+        run: curl -L https://api.github.com/repos/$OWNER/$REPO/zipball/0.0.99 -o $LOCAL_FILE_NAME
 
-      - name: List directory contents
-        run: ls
+      - name: Tag Details
+        run: echo runnning on tag $GITHUB_REF
 
       - name: Archive plugin file
         uses: actions/upload-artifact@v2
