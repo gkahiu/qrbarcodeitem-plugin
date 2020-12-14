@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Download asset
-        run: curl -v -L https://api.github.com/repos/gkahiu/qrbarcodeitem-plugin/zipball/0.0.99 -o qrcode_plugin.zip
+        run: curl -v -L https://api.github.com/repos/$OWNER/$REPO/zipball/0.0.99 -o $LOCAL_FILE_NAME
 
       - name: List directory contents
         run: ls
@@ -25,5 +25,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: plugin-file
-          path: qrcode_plugin.zip
+          path: $LOCAL_FILE_NAME
           retention-days: 3
