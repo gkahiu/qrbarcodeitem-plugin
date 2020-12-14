@@ -25,5 +25,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: plugin-file
-          path: qrcode_plugin.zip
+          path: ${{ LOCAL_FILE_NAME }}
           retention-days: 3
