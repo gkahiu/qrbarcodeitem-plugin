@@ -1,4 +1,4 @@
-name: QRCodeLayoutItem Release Workflow
+name: Plugin Release Workflow
 
 on:
   release:

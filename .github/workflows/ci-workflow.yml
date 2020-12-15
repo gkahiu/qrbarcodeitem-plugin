@@ -1,4 +1,4 @@
-name: GitHub CI Workflow
+name: CI Workflow
 
 on:
   push:
