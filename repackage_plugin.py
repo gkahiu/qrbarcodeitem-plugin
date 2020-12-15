@@ -20,6 +20,11 @@ email                : gkahiu@gmail.com
  ***************************************************************************/
 """
 import os
+import shutil
+from zipfile import (
+    is_zipfile,
+    ZipFile
+)
 
 
 def repackage_plugin(source=None):
@@ -34,11 +39,43 @@ def repackage_plugin(source=None):
     if source is None:
         source = os.getenv('REPO_PACKAGE')
 
-    print(source)
-
     if source is None:
         print('Source file is not defined.')
         return
+
+    if not is_zipfile(source):
+        print('Input file is not a valid zip file.')
+        return
+
+    plugin_name = os.getenv('PLUGIN_NAME')
+
+    # Extract plugin files
+    root_path = ''
+    with ZipFile(source, 'r') as zf:
+        if len(zf.namelist()) == 0:
+            print('The zip package is empty.')
+            return
+
+        root_path = zf.namelist()[0]
+        base_dir = '{0}{1}'.format(root_path, plugin_name)
+        test_dir = '{0}/test'.format(base_dir)
+        for fi in zf.namelist():
+            if base_dir in fi:
+                # Exclude test dir
+                if test_dir in fi:
+                    continue
+                zf.extract(fi)
+
+    plugin_package = os.getenv('PLUGIN_PACKAGE').replace('.zip', '')
+    print(plugin_package)
+
+    # Create archive
+    shutil.make_archive(
+        plugin_package,
+        'zip',
+        root_dir=root_path,
+        base_dir=plugin_name
+    )
 
 
 if __name__ == '__main__':
