@@ -10,17 +10,26 @@ jobs:
     env:
       OWNER: gkahiu
       REPO: qrbarcodeitem-plugin
-      LOCAL_FILE_NAME: qrcode_plugin.zip
+      REPO_PACKAGE: /tmp/qrcode_package.zip
 
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+          
       - name: Download asset
-        run: curl -L https://api.github.com/repos/$OWNER/$REPO/zipball/${GITHUB_REF##*/} -o $LOCAL_FILE_NAME
+        run: curl -L https://api.github.com/repos/$OWNER/$REPO/zipball/${GITHUB_REF##*/} -o $REPO_PACKAGE
+
+      - name: Repackage zip file for core plugin files only
+        run:  python3 repackage_plugin.py
 
       - name: Archive plugin file
         uses: actions/upload-artifact@v2
         with:
-          name: plugin-file
-          path: ${{ env.LOCAL_FILE_NAME }}
+          name: qrcode-plugin-package
+          path: ${{ env.REPO_PACKAGE }}
           retention-days: 3
