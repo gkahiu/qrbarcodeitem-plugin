@@ -1,4 +1,4 @@
-name: Plugin Release Workflow
+name: release
 
 on:
   release:
