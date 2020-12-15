@@ -67,7 +67,6 @@ def repackage_plugin(source=None):
                 zf.extract(fi)
 
     plugin_package = os.getenv('PLUGIN_PACKAGE').replace('.zip', '')
-    print(plugin_package)
 
     # Create archive
     shutil.make_archive(

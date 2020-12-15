@@ -86,10 +86,6 @@ class QRBarCodePluginLoader:
         # Register metadata for the different linear barcode types
         register_linear_barcode_metadata()
 
-    def unregister_layout_items(self):
-        """Unregister QR and bar code layout."""
-        pass
-
     def unload(self):
         """Removes the qr and bar code layout from the QGIS layout registry."""
-        self.unregister_layout_items()
+        pass
