@@ -128,9 +128,19 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
         """
         if self.computed_value():
             self.generate_code()
+        else:
+            self.setPicturePath('')
 
     def refreshPicture(self, exp_ctx=None): # pylint: disable=unused-argument
         """Override default behaviour for refreshing the item."""
+        self.update_item()
+
+    def refresh(self):
+        """
+        Refresh item.
+        """
+        super().refresh()
+        self.invalidateCache()
         self.update_item()
 
     def generate_code(self):
