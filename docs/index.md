@@ -16,6 +16,10 @@ Using the plugin manager in QGIS:
 
 ## <a name="pg_usage"></a>3. Usage
 The QR code and linear barcode items can either be added from the `Add Item` menu or `Toolbox` toolbar in the layout window.
+* `Add Item` menu option
+  ![menu_add_item](images/menu_add_item.png "Menu Add Item")
+* `Toolbox` option
+  ![toolbox_add_item](images/toolbox_add_items.png "Toolbox Add Item")
 
 ### 3.1 QR Code Item
 * [Barcode Data](#qr_code_data)
