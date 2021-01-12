@@ -29,6 +29,7 @@ from qgis.PyQt.QtCore import (
 from qrbarcodeitem.layout.registry import register_barcode_items
 from qrbarcodeitem.layout.linear_metadata import \
     register_linear_barcode_metadata
+from qrbarcodeitem.layout.svg_tracker import SvgFileTracker
 from qrbarcodeitem.gui.registry import register_items_gui_metadata
 
 
@@ -87,5 +88,5 @@ class QRBarCodePluginLoader:
         register_linear_barcode_metadata()
 
     def unload(self):
-        """Removes the qr and bar code layout from the QGIS layout registry."""
-        pass
+        """Clear SVG files in temp directory."""
+        SvgFileTracker.instance().clean_up()

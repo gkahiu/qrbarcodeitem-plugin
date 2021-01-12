@@ -40,6 +40,8 @@ from qgis.core import (
     QgsMessageLog
 )
 
+from qrbarcodeitem.layout.svg_tracker import SvgFileTracker
+
 
 class BarcodeException(Exception):
     """Exception when generating barcode control_images."""
@@ -161,6 +163,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
                 svg_path = '{0}.svg'.format(svg_file.fileName())
                 self._gen_image(svg_path)
                 self.setPicturePath(svg_path)
+                SvgFileTracker.instance().add_file(svg_path)
                 status = True
         except BarcodeException as bc_ex:
             # Set error image

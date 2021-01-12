@@ -44,8 +44,8 @@ class LinearMetadataCombobox(QComboBox):
 
     def _populate_metadata_items(self):
         # Add metadata objects to the list of combobox items.
-        meta_items = LinearBarcodeMetadataRegistry.instance().items()
-        for i, meta in enumerate(meta_items):
+        meta_registry = LinearBarcodeMetadataRegistry.instance()
+        for i, meta in enumerate(meta_registry):
             self.insertItem(i, meta.display_name(), meta)
             self._meta_idx[meta.type_id()] = i
 

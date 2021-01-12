@@ -33,7 +33,7 @@ class LinearBarcodeMetadataTests(unittest.TestCase):
         # Test LinearBarcodeMetadataRegistry
         register_linear_barcode_metadata()
         registry = LinearBarcodeMetadataRegistry.instance()
-        self.assertEqual(len(registry), 2)
+        self.assertEqual(len(registry), 5)
 
         # Test search function
         metadata = registry.metadata_by_typeid('code39')

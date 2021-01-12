@@ -180,6 +180,10 @@ class LinearBarcodeMetadataRegistry:
         """
         return len(self._metadata)
 
+    def __iter__(self):
+        """Returns an iterable object containing the metadata items."""
+        return iter(self.items())
+
 
 class Code39Metadata(AbstractLinearBarcodeMetadata):
     """Metadata for 'code39' linear barcode type."""
@@ -238,6 +242,57 @@ class Code128Metadata(AbstractLinearBarcodeMetadata):
         return True
 
 
+class Gs1_128Metadata(Code128Metadata):
+    """Metadata for 'gs1_128' linear barcode type."""
+
+    def display_name(self):
+        # Friendly display name.
+        return tr('GS1-128')
+
+    def type_id(self):
+        # Type identifier.
+        return 'gs1_128'
+
+
+class Ean8Metadata(AbstractLinearBarcodeMetadata):
+    """Metadata for 'ean8' linear barcode type."""
+
+    def display_name(self):
+        # Friendly display name.
+        return tr('EAN-8')
+
+    def type_id(self):
+        # Type identifier.
+        return 'ean8'
+
+    def supports_manual_checksum(self):
+        return False
+
+    def is_checksum_automatic(self):
+        return True
+
+    def max_input_length(self):
+        return 7
+
+    def is_character_allowed(self, data_char):
+        return data_char.isdigit()
+
+
+class Ean13Metadata(Ean8Metadata):
+    """Metadata for 'ean13' linear barcode type."""
+
+    def display_name(self):
+        # Friendly display name.
+        return tr('EAN-13')
+
+    def type_id(self):
+        # Type identifier.
+        return 'ean13'
+
+    def max_input_length(self):
+        return 12
+
+
 def register_linear_barcode_metadata():
     """
     Register core metadata items.
@@ -245,3 +300,6 @@ def register_linear_barcode_metadata():
     meta_registry = LinearBarcodeMetadataRegistry.instance()
     meta_registry.register_metadata(Code39Metadata())
     meta_registry.register_metadata(Code128Metadata())
+    meta_registry.register_metadata(Gs1_128Metadata())
+    meta_registry.register_metadata(Ean8Metadata())
+    meta_registry.register_metadata(Ean13Metadata())
