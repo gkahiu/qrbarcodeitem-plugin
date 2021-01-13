@@ -61,7 +61,7 @@ Define the pattern/data and background colors of the QR code by clicking the **D
 ![linear_barcode panel](images/linear_barcode_panel.png "Linear barcode panel")
 
 The ![linear_barcode](images/barcode_plus.png "Linear Barcode") `Linear Barcode` item enables dynamically-generated one-dimensional barcodes to be added to a layout. 
-It supports the most commonly used linear barcode symbologies, such as as Code 39, EAN, UPC, GS1-128 etc., generated from alphanumeric text or expressions depending 
+It supports the most commonly used linear barcode symbologies, such as as Code 39, EAN, GS1-128 etc., generated from alphanumeric text or expressions depending 
 on the allowed types for the given symbology type.
 
 Similarly, common properties for a layout item can be defined for the linear barcode item.
@@ -69,7 +69,7 @@ Similarly, common properties for a layout item can be defined for the linear bar
 #### <a name="linear_barcode_props"></a>Properties ####
 
 Set the specific characteristics of the linear barcode symbology. These include:
-* **Linear barcode type** - Choose the linear barcode type. The supported types are Code 39, Code 128, GS1-128
+* **Linear barcode type** - Choose the linear barcode type. The supported types are Code 39, Code 128, GS1-128, EAN-8 and EAN-13.
 * **Add checksum** - Select to calculate and append a checksum in the barcode. Depending on the barcode type, the checksum will be calculated automatically. For some types, 
 such as Code 39, the checksum is optional.
 * **Render barcode text** - Select to render text under the barcode.
