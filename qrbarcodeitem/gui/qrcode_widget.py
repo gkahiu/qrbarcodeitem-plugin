@@ -145,8 +145,8 @@ class QrCodeLayoutItemWidget(QgsLayoutItemBaseWidget): # pylint: disable=too-few
         self._cd_value_widget.block_value_widget_signals(True)
         self._cd_value_widget.code_value = self._qrcode_item.code_value
         self._cd_value_widget.value_text_edit.moveCursor(
-            QTextCursor.End,
-            QTextCursor.MoveAnchor
+            QTextCursor.MoveOperation.End,
+            QTextCursor.MoveMode.MoveAnchor
         )
         self._cd_value_widget.block_value_widget_signals(False)
 

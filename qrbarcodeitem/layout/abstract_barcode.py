@@ -55,7 +55,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
         super().__init__(layout)
         self._code_value = ''
         self._temp_dir = '{0}/qrbarbarcode'.format(
-            QStandardPaths.standardLocations(QStandardPaths.TempLocation)
+            QStandardPaths.writableLocation(QStandardPaths.StandardLocation.TempLocation)
         )
 
         # Set picture properties
@@ -234,9 +234,9 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
             'QrBarCodeLayoutItem',
             'Error!'
         )
-        self.set_text_image(error_txt, Qt.red)
+        self.set_text_image(error_txt, Qt.GlobalColor.red)
 
-    def set_text_image(self, text, color=Qt.gray):
+    def set_text_image(self, text, color=Qt.GlobalColor.gray):
         """
         Set the item picture based on an SVG file created from the given text.
         :param text: Text to be rendered as SVG.
@@ -256,7 +256,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
         svg_gen.setViewBox(QRect(0, 0, w, h))
 
         # Paint text
-        font = QFont('Arial', 14, QFont.Bold)
+        font = QFont('Arial', 14, QFont.Weight.Bold)
         p = QPainter()
         p.begin(svg_gen)
         p.setFont(font)

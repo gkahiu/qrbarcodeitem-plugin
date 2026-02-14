@@ -175,24 +175,24 @@ class LinearBarcodeLayoutItemWidget(QgsLayoutItemBaseWidget): # pylint: disable=
             self._chk_checksum.setEnabled(True)
             # Set check status based on barcode properties
             if self._barcode_item.add_checksum:
-                self._chk_checksum.setCheckState(Qt.Checked)
+                self._chk_checksum.setCheckState(Qt.CheckState.Checked)
             else:
-                self._chk_checksum.setCheckState(Qt.Unchecked)
+                self._chk_checksum.setCheckState(Qt.CheckState.Unchecked)
         else:
             self._barcode_item.supports_manual_checksum = False
             self._chk_checksum.setEnabled(False)
             self._barcode_item.add_checksum = False
             if self._current_meta.is_checksum_automatic():
-                self._chk_checksum.setCheckState(Qt.Checked)
+                self._chk_checksum.setCheckState(Qt.CheckState.Checked)
             else:
-                self._chk_checksum.setCheckState(Qt.Unchecked)
+                self._chk_checksum.setCheckState(Qt.CheckState.Unchecked)
 
     def _on_add_checksum(self, state):
         """
         Slot raised to add checksum to the barcode data.
         """
         add_checksum = False
-        if state == Qt.Checked:
+        if state == Qt.CheckState.Checked:
             add_checksum = True
 
         self._barcode_item.beginCommand(
@@ -289,7 +289,7 @@ class LinearBarcodeLayoutItemWidget(QgsLayoutItemBaseWidget): # pylint: disable=
         Slot raised when render_text has been checked/unchecked.
         """
         render_text = False
-        if state == Qt.Checked:
+        if state == Qt.CheckState.Checked:
             render_text = True
 
         self._barcode_item.beginCommand(
@@ -320,17 +320,17 @@ class LinearBarcodeLayoutItemWidget(QgsLayoutItemBaseWidget): # pylint: disable=
         # Render text property
         self._chk_render_txt.blockSignals(True)
         if self._barcode_item.render_text:
-            self._chk_render_txt.setCheckState(Qt.Checked)
+            self._chk_render_txt.setCheckState(Qt.CheckState.Checked)
         else:
-            self._chk_render_txt.setCheckState(Qt.Unchecked)
+            self._chk_render_txt.setCheckState(Qt.CheckState.Unchecked)
         self._chk_render_txt.blockSignals(False)
 
         # Barcode value (which could also be an expression)
         self._cd_value_widget.block_value_widget_signals(True)
         self._cd_value_widget.code_value = self._barcode_item.code_value
         self._cd_value_widget.value_text_edit.moveCursor(
-            QTextCursor.End,
-            QTextCursor.MoveAnchor
+            QTextCursor.MoveOperation.End,
+            QTextCursor.MoveMode.MoveAnchor
         )
         self._cd_value_widget.block_value_widget_signals(False)
 
