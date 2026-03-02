@@ -50,7 +50,7 @@ jobs:
           qgis_testrunner.sh $PLUGIN_NAME.test.test_suite
 
       - name: Archive render results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: barcode-render-results
           path: /tmp/*.png
