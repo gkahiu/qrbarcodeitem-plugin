@@ -8,7 +8,9 @@ Thank you to everyone who has contributed to the plugin!
 
 ## Contributors
 
-- **Till Frankenbach** - [@tillhainbach](https://github.com/tillhainbach) — Support PyQt6 compatibility
+- **Till Frankenbach** - [@tillhainbach](https://github.com/tillhainbach) — Ensure PyQt6 compatibility
+- **Denis Rouzaud** - [@3nids](https://github.com/3nids) — CI and build updates
+- **Ben Greiner** - [@bnavigator](https://github.com/bnavigator) — Import fix in barcode writer
 
 ---
 
