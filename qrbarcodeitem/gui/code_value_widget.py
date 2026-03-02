@@ -43,7 +43,7 @@ class CodeValueWidget(QWidget):
         super().__init__(item_widget)
         self._item_widget = item_widget
         self._value_text_edit = QTextEdit()
-        self._value_text_edit.setLineWrapMode(QTextEdit.WidgetWidth)
+        self._value_text_edit.setLineWrapMode(QTextEdit.LineWrapMode.WidgetWidth)
         self._value_text_edit.textChanged.connect(
             self._on_code_value_changed
         )
@@ -134,7 +134,7 @@ class CodeValueWidget(QWidget):
         )
         exp_dlg.setWindowTitle(self.tr('Insert Expression for Barcode Data'))
         exp_dlg.setAllowEvalErrors(False)
-        if exp_dlg.exec_() == QDialog.Accepted:
+        if exp_dlg.exec() == QDialog.DialogCode.Accepted:
             exp = exp_dlg.expressionText()
             if exp:
                 self._value_text_edit.setPlainText('[%{0}%]'.format(exp))
