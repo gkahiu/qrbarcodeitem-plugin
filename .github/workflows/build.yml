@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         qgis-version-tag:
-        - qgis/qgis:release-3_44
+        - qgis/qgis:3.44
     env:
       PLUGIN_NAME: qrbarcodeitem
       BASE_TEST_DIR: /QGIS/tests/testdata/control_images
