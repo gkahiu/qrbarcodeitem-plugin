@@ -5,7 +5,7 @@ about=A plugin for adding QR and linear barcode items to a QGIS print layout. Th
 category=Layout
 qgisMinimumVersion=3.6
 qgisMaximumVersion=4.99
-version=0.3
+version=0.4
 
 author=John Kahiu
 email=gkahiu@gmail.com
