@@ -50,13 +50,13 @@ class QrCodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
             ITEM_CATEGORY
         )
 
-    def createItemWidget(self, item): # pylint: disable=missing-function-docstring, no-self-use
+    def createItemWidget(self, item): # pylint: disable=missing-function-docstring
         return QrCodeLayoutItemWidget(None, item)
 
-    def createItem(self, layout): # pylint: disable=missing-function-docstring, no-self-use
+    def createItem(self, layout): # pylint: disable=missing-function-docstring
         return QrCodeLayoutItem(layout)
 
-    def creationIcon(self): # pylint: disable=missing-function-docstring, no-self-use
+    def creationIcon(self): # pylint: disable=missing-function-docstring
         return get_icon('qrcode_plus.svg')
 
 
@@ -72,13 +72,13 @@ class LinearBarcodeLayoutItemGuiMetadata(QgsLayoutItemAbstractGuiMetadata):
             ITEM_CATEGORY
         )
 
-    def createItemWidget(self, item): # pylint: disable=missing-function-docstring, no-self-use
+    def createItemWidget(self, item): # pylint: disable=missing-function-docstring
         return LinearBarcodeLayoutItemWidget(None, item)
 
-    def createItem(self, layout): # pylint: disable=missing-function-docstring, no-self-use
+    def createItem(self, layout): # pylint: disable=missing-function-docstring
         return LinearBarcodeLayoutItem(layout)
 
-    def creationIcon(self): # pylint: disable=missing-function-docstring, no-self-use
+    def creationIcon(self): # pylint: disable=missing-function-docstring
         return get_icon('barcode_plus.svg')
 
 

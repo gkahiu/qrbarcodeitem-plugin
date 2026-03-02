@@ -159,7 +159,7 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
 
         return opts
 
-    def icon(self): # pylint: disable=no-self-use
+    def icon(self):
         """Return item's icon."""
         return get_icon('barcode.svg')
 
@@ -192,7 +192,7 @@ class LinearBarcodeLayoutItem(AbstractBarcodeLayoutItem):
                 str(bce)
             ) from bce
 
-    def type(self): # pylint: disable=no-self-use
+    def type(self):
         """Return item's unique type identifier."""
         return LINEAR_BARCODE_TYPE
 
@@ -248,6 +248,6 @@ class LinearBarcodeLayoutItemMetadata(QgsLayoutItemAbstractMetadata):
             )
         )
 
-    def createItem(self, layout): # pylint: disable=no-self-use
+    def createItem(self, layout):
         """Factory method that return the QR Code Item."""
         return LinearBarcodeLayoutItem(layout)

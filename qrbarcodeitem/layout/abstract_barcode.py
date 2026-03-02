@@ -54,9 +54,10 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
     def __init__(self, layout):
         super().__init__(layout)
         self._code_value = ''
-        self._temp_dir = '{0}/qrbarbarcode'.format(
-            QStandardPaths.writableLocation(QStandardPaths.StandardLocation.TempLocation)
+        temp_location = QStandardPaths.writableLocation(
+            QStandardPaths.StandardLocation.TempLocation
         )
+        self._temp_dir = f'{temp_location}/qrbarbarcode'
 
         # Set picture properties
         self.setResizeMode(QgsLayoutItemPicture.Zoom)
@@ -95,10 +96,8 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
 
     def _gen_svg_path(self):
         """Generate a file path in temp folder."""
-        return '{0}/{1}.svg'.format(
-            self._temp_dir,
-            QUuid.createUuid().toString()
-        )
+        uuid = QUuid.createUuid().toString()
+        return f'{self._temp_dir}/{uuid}.svg'
 
     def computed_value(self):
         """
@@ -160,7 +159,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
         svg_file = QTemporaryFile()
         try:
             if svg_file.open():
-                svg_path = '{0}.svg'.format(svg_file.fileName())
+                svg_path = f'{svg_file.fileName()}.svg'
                 self._gen_image(svg_path)
                 self.setPicturePath(svg_path)
                 SvgFileTracker.instance().add_file(svg_path)
@@ -204,7 +203,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
         """Write base properties to DOM element."""
         el.setAttribute('codeValue', self._code_value)
 
-    def _write_props_to_el(self, el, document, context): # pylint: disable=unused-argument, no-self-use
+    def _write_props_to_el(self, el, document, context): # pylint: disable=unused-argument
         """
         Write custom properties for implementation by subclass, should
         return True or False.
@@ -221,7 +220,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
 
         return status
 
-    def _read_props_from_el(self, el, document, context): # pylint: disable=unused-argument, no-self-use
+    def _read_props_from_el(self, el, document, context): # pylint: disable=unused-argument
         """Read properties from subclass. Should return True of False."""
         return True
 
@@ -267,7 +266,7 @@ class AbstractBarcodeLayoutItem(QgsLayoutItemPicture):
         # Set picture path
         self.setPicturePath(svg_path)
 
-    def _str_to_bool(self, str_val): # pylint: disable=no-self-use
+    def _str_to_bool(self, str_val):
         # Returns a boolean value from the string representation.
         if str_val.lower() in ('true', 'yes', 't', 'y'):
             return True

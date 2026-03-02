@@ -111,7 +111,7 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
             self._data_color = clr
             self.update_item()
 
-    def icon(self): # pylint: disable=no-self-use
+    def icon(self):
         """Return item's icon."""
         return get_icon('qrcode.svg')
 
@@ -140,7 +140,7 @@ class QrCodeLayoutItem(AbstractBarcodeLayoutItem):
         except ValueError as ve:
             raise BarcodeException(str(ve)) from ve
 
-    def type(self): # pylint: disable=no-self-use
+    def type(self):
         """Return item's unique identifier."""
         return QR_CODE_TYPE
 
@@ -177,6 +177,6 @@ class QrCodeLayoutItemMetadata(QgsLayoutItemAbstractMetadata):
             QCoreApplication.translate('QrBarCodeLayoutItem', 'QR Code')
         )
 
-    def createItem(self, layout): # pylint: disable=no-self-use
+    def createItem(self, layout):
         """Factory method that return the QR Code Item."""
         return QrCodeLayoutItem(layout)

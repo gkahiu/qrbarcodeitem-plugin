@@ -53,7 +53,7 @@ class QRBarCodePluginLoader:
         locale_path = os.path.join(
             self.plugin_dir,
             'i18n',
-            'qrc_{}.qm'.format(locale))
+            f'qrc_{locale}.qm')
 
         if os.path.exists(locale_path):
             self.translator = QTranslator()
@@ -63,7 +63,7 @@ class QRBarCodePluginLoader:
                 QCoreApplication.installTranslator(self.translator)
 
     # noinspection PyMethodMayBeStatic
-    def tr(self, message): # pylint: disable=no-self-use
+    def tr(self, message):
         """Get the translation for a string using Qt translation API.
 
         We implement this ourselves since we do not inherit QObject.
@@ -77,7 +77,7 @@ class QRBarCodePluginLoader:
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
         return QCoreApplication.translate('QrBarCodeLayoutItem', message)
 
-    def initGui(self): # pylint: disable=no-self-use
+    def initGui(self):
         """Register QR and barcode layout items in QGIS layout item
         registry.
         """
