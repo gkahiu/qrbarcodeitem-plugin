@@ -4,8 +4,8 @@ description=Add QR and linear barcode items to a QGIS print or report layout
 about=A plugin for adding QR and linear barcode items to a QGIS print layout. The items are accessible in the menu of a layout window under Add Item > Add Barcode Item from where one can either choose a linear barcode or QR code item.
 category=Layout
 qgisMinimumVersion=3.6
-qgisMaximumVersion=3.99
-version=0.3
+qgisMaximumVersion=4.99
+version=0.4
 
 author=John Kahiu
 email=gkahiu@gmail.com
@@ -19,3 +19,5 @@ repository=https://github.com/gkahiu/qrbarcodeitem-plugin
 
 experimental=False
 deprecated=False
+
+supportsQt6=True
