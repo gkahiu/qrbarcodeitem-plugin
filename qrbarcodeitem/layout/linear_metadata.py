@@ -71,7 +71,7 @@ class AbstractLinearBarcodeMetadata(ABC):
         """
         return -1
 
-    def is_character_allowed(self, data_char): # pylint: disable=no-self-use
+    def is_character_allowed(self, data_char):
         """
         Evaluates if the given character is allowed.
         :param data_char: Character to evaluate if allowed.

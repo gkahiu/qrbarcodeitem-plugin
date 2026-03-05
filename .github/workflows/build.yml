@@ -33,6 +33,12 @@ jobs:
             python3 -m pip install --upgrade pip
             python3 -m pip install -r requirements.txt
 
+      - name: Prepare tests_directory plugin path
+        run: |
+          mkdir -p /tests_directory
+          rm -rf /tests_directory/${PLUGIN_NAME}
+          cp -a "${GITHUB_WORKSPACE}/${PLUGIN_NAME}" "/tests_directory/${PLUGIN_NAME}"
+
       - name: Install plugin
         run: qgis_setup.sh $PLUGIN_NAME
 

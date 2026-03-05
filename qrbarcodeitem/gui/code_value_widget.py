@@ -43,7 +43,9 @@ class CodeValueWidget(QWidget):
         super().__init__(item_widget)
         self._item_widget = item_widget
         self._value_text_edit = QTextEdit()
-        self._value_text_edit.setLineWrapMode(QTextEdit.LineWrapMode.WidgetWidth)
+        self._value_text_edit.setLineWrapMode(
+            QTextEdit.LineWrapMode.WidgetWidth
+            )
         self._value_text_edit.textChanged.connect(
             self._on_code_value_changed
         )
@@ -137,7 +139,7 @@ class CodeValueWidget(QWidget):
         if exp_dlg.exec() == QDialog.DialogCode.Accepted:
             exp = exp_dlg.expressionText()
             if exp:
-                self._value_text_edit.setPlainText('[%{0}%]'.format(exp))
+                self._value_text_edit.setPlainText(f'[%{exp}%]')
 
     def block_value_widget_signals(self, status):
         """

@@ -249,11 +249,9 @@ class LinearBarcodeLayoutItemWidget(QgsLayoutItemBaseWidget): # pylint: disable=
         if max_length != -1 and len(cd_val) > max_length:
             self.add_warning_message(
                 self.tr(
-                    'Barcode data cannot exceed the maximum length of '
-                    '{0} characters for {1} linear barcode type.'.format(
-                        max_length,
-                        self._current_meta.display_name()
-                    )
+                    f'Barcode data cannot exceed the maximum length of '
+                    f'{max_length} characters for '
+                    f'{self._current_meta.display_name()} linear barcode type.'
                 )
             )
             is_invalid = True

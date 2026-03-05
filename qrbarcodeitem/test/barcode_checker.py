@@ -64,8 +64,8 @@ class BarcodeLayoutChecker(QgsMultiRenderChecker):
 
         # Create output image
         output_image = QImage(self.size, QImage.Format.Format_RGB32)
-        output_image.setDotsPerMeterX(self.dots_per_metre)
-        output_image.setDotsPerMeterY(self.dots_per_metre)
+        output_image.setDotsPerMeterX(int(self.dots_per_metre))
+        output_image.setDotsPerMeterY(int(self.dots_per_metre))
         QgsMultiRenderChecker.drawBackground(output_image)
 
         # Draw layout to image
