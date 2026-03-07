@@ -19,5 +19,3 @@ repository=https://github.com/gkahiu/qrbarcodeitem-plugin
 
 experimental=False
 deprecated=False
-
-supportsQt6=True
